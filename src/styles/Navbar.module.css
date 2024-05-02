@@ -1,0 +1,12 @@
+.Active {
+  color: black;
+  font-weight: bold;
+}
+
+.NotActive {
+  color: gray;
+}
+
+.AppBar {
+  background-color: white;
+}
