@@ -1,0 +1,17 @@
+.Active {
+  color: black;
+  font-weight: bold;
+}
+
+.NotActive {
+  color: gray;
+}
+
+.nav-item {
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+/* .AppBar {
+  background-color: white;
+} */
