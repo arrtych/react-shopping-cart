@@ -14,7 +14,7 @@ export interface StoreItemProps {
 }
 
 //todo: useMediaQuery for card swhong on mobile by one card
-
+// local
 const StoreItem: React.FC<StoreItemProps> = (props: StoreItemProps) => {
   const { currency, id, name, price, imgUrl } = { currency: "$", ...props };
 

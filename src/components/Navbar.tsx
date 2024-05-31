@@ -15,6 +15,10 @@ const Navbar: React.FC = () => {
     return item == "home";
   };
 
+  // const toggleDrawer = (newOpen: boolean) => () => {
+  //   setOpen(newOpen);
+  // };
+
   return (
     <AppBar position="static" style={{ backgroundColor: "white" }}>
       <Toolbar>
