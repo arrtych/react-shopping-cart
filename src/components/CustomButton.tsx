@@ -8,16 +8,18 @@ interface ButtonProps {
   variant?: ButtonOwnProps["variant"];
   //   icon?: any; // todo:change
   children?: ReactNode;
+  onClick?: () => void;
 }
 
 const CustomButton: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const { children, color, variant } = {
+  const { children, color, variant, onClick } = {
     variant: "contained" as ButtonOwnProps["variant"],
     ...props,
   };
+
   return (
     <>
-      <Button variant={variant} color={color}>
+      <Button variant={variant} color={color} onClick={onClick}>
         {children}
       </Button>
     </>

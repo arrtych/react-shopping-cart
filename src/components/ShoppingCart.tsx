@@ -11,16 +11,18 @@ type Anchor = "top" | "left" | "bottom" | "right";
 
 const ShoppingCart: React.FC<StoreItemProps> = (props: StoreItemProps) => {
   const { isOpen } = { ...props };
-  const [open, setOpen] = useState(false);
+  //   const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-  };
+  //   const toggleDrawer = (newOpen: boolean) => () => {
+  //     setOpen(newOpen);
+  //   };
 
   const DrawerList = <div>1...2..3</div>;
   return (
     <>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
+      {/* onClose={toggleDrawer(false)} */}
+      <Drawer open={isOpen} anchor="right">
         {DrawerList}
       </Drawer>
     </>

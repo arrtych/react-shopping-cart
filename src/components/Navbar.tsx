@@ -7,8 +7,14 @@ import { useState } from "react";
 import "../styles/Navbar.css";
 import CustomShoppingCartIcon from "./CustomShoppingCartIcon";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  isOpen: boolean;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const Navbar: React.FC<NavbarProps> = (props) => {
   let navItems = ["home", "store", "about"];
+  const { onClick } = { ...props };
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const isHome = (item: string) => {
@@ -65,8 +71,9 @@ const Navbar: React.FC = () => {
             height: "60px",
             borderRadius: "50%",
           }}
+          onClick={onClick}
         >
-          <CustomShoppingCartIcon amount={4} />
+          <CustomShoppingCartIcon amount={4} isOpen={false} />
         </Button>
       </Toolbar>
     </AppBar>

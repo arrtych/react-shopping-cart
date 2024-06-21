@@ -15,6 +15,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 interface ShoppingCartIconProps {
   amount: number;
+  isOpen: boolean;
 }
 
 const CustomShoppingCartIcon: React.FC<ShoppingCartIconProps> = ({
