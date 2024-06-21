@@ -12,7 +12,11 @@ function App() {
   const [openDrawer, setOpenDrawer] = useState(false);
   const changeDrawer = (e: any) => {
     setOpenDrawer((e) => !e);
-    console.log("openDrawer", e);
+    // console.log("openDrawer", e);
+  };
+
+  const closeDrawer = () => {
+    setOpenDrawer(false);
   };
 
   return (
@@ -24,7 +28,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        <ShoppingCart isOpen={openDrawer} />
+        <ShoppingCart isOpen={openDrawer} onClose={closeDrawer} />
       </Router>
     </ShoppingCartContextProvider>
   );
