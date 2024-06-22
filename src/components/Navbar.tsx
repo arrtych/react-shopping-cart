@@ -24,9 +24,9 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   // const toggleDrawer = (newOpen: boolean) => () => {
   //   setOpen(newOpen);
   // };
-
+  //todo: fixed menu
   return (
-    <AppBar position="static" style={{ backgroundColor: "white" }}>
+    <AppBar position="fixed" style={{ backgroundColor: "white" }}>
       <Toolbar>
         <Box
           sx={{
@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
           }}
           onClick={onClick}
         >
-          <CustomShoppingCartIcon amount={4} isOpen={false} />
+          <CustomShoppingCartIcon isOpen={false} />
         </Button>
       </Toolbar>
     </AppBar>

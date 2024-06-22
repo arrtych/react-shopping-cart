@@ -15,6 +15,7 @@ type ShoppingCartContext = {
   items: StoreItemProps[];
   addToCart: (item: StoreItemProps) => void;
   removeFromCart: (item: StoreItemProps) => void;
+  getTotalAmount: () => number;
 
   decreaseCartAmount: (item: StoreItemProps) => void; //todo: remove id
   // cartQuantity: number
@@ -74,6 +75,16 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
     });
   }
 
+  function getTotalAmount() {
+    const amounts = items.map((item) => item.amount);
+    const totalAmount = amounts.reduce(
+      (accumulator, currentAmount) => accumulator + currentAmount,
+      0
+    );
+
+    return totalAmount;
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -83,6 +94,7 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
         decreaseCartAmount,
         addToCart,
         removeFromCart,
+        getTotalAmount,
       }}
     >
       {children}

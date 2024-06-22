@@ -1,8 +1,9 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -14,19 +15,25 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 
 interface ShoppingCartIconProps {
-  amount: number;
+  amount?: number;
   isOpen: boolean;
 }
 
-const CustomShoppingCartIcon: React.FC<ShoppingCartIconProps> = ({
-  amount,
-}) => {
+const CustomShoppingCartIcon: React.FC<ShoppingCartIconProps> = ({}) => {
+  const {
+    addToCart,
+    removeFromCart,
+    increaseItemAmount,
+    getTotalAmount,
+    decreaseCartAmount,
+  } = useContext(ShoppingCartContext);
+
+  let amount = getTotalAmount() || 0;
+
   return (
-    // <IconButton aria-label="cart">
     <StyledBadge badgeContent={amount} color={"warning"}>
       <ShoppingCartIcon />
     </StyledBadge>
-    // </IconButton>
   );
 };
 
