@@ -1,28 +1,13 @@
-import { Button, Card, Grid, Typography } from "@mui/material";
-import React, { useContext, useEffect } from "react";
+import { Grid, Typography } from "@mui/material";
+import React, { useContext } from "react";
 import CustomButton from "./CustomButton";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import ShoppingCart from "./ShoppingCart";
-import {
-  ShoppingCartContext,
-  useShoppingContext,
-} from "../context/ShoppingCartContext";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import ItemAmount from "./ItemAmount";
-
-export interface StoreItemProps {
-  //@todo: rename
-  id: number;
-  name: string;
-  price: number;
-  imgUrl: string;
-  amount: number;
-  currency?: string;
-}
+import { ProductProps } from "../types/Product";
 
 //todo: useMediaQuery for card swhong on mobile by one card
 // local
-const StoreItem: React.FC<StoreItemProps> = (props: StoreItemProps) => {
+const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   const { currency, id, name, price, imgUrl } = {
     currency: "$",
     ...props,
@@ -32,7 +17,7 @@ const StoreItem: React.FC<StoreItemProps> = (props: StoreItemProps) => {
     removeFromCart,
     increaseItemAmount,
     getItemAmount,
-    decreaseCartAmount,
+    decreaseItemAmount,
   } = useContext(ShoppingCartContext);
 
   let amount = getItemAmount(id);
@@ -54,7 +39,6 @@ const StoreItem: React.FC<StoreItemProps> = (props: StoreItemProps) => {
               </Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              {/* marginRight: "15px" */}
               <Typography variant="h4" component="span">
                 {price} {currency}
               </Typography>
@@ -73,30 +57,10 @@ const StoreItem: React.FC<StoreItemProps> = (props: StoreItemProps) => {
         >
           {isInCart ? (
             <>
-              {/* <CustomButton
-                color="primary"
-                variant="outlined"
-                onClick={() => decreaseCartAmount(props)}
-              >
-                <RemoveIcon />
-              </CustomButton>
-              <Typography
-                sx={{
-                  padding: "0 1.25rem",
-                }}
-              >
-                {amount}
-              </Typography>
-              <CustomButton
-                color="primary"
-                onClick={() => increaseItemAmount(props)}
-              >
-                <AddIcon />
-              </CustomButton> */}
               <ItemAmount
                 amount={amount}
-                increase={() => decreaseCartAmount(props)}
-                decrease={() => increaseItemAmount(props)}
+                increase={() => increaseItemAmount(props)}
+                decrease={() => decreaseItemAmount(props)}
               />
 
               <CustomButton

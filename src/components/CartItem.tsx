@@ -1,4 +1,3 @@
-import { StoreItemProps } from "./StoreItem";
 import React, { useContext } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import {
@@ -7,14 +6,21 @@ import {
 } from "../context/ShoppingCartContext";
 import { Grid, Typography } from "@mui/material";
 import CustomButton from "./CustomButton";
+import ItemAmount from "./ItemAmount";
+import { ProductProps } from "../types/Product";
 
 export interface CartIemProps {
-  item: StoreItemProps;
+  item: ProductProps;
 }
 
 const CartItem: React.FC<CartIemProps> = (props: CartIemProps) => {
   const { item } = { ...props };
-  const { getItemAmount, removeFromCart } = useContext(ShoppingCartContext);
+  const {
+    getItemAmount,
+    removeFromCart,
+    decreaseItemAmount,
+    increaseItemAmount,
+  } = useContext(ShoppingCartContext);
   let amount = getItemAmount(item.id);
   let totalAmount = amount * item.price;
   return (
@@ -29,8 +35,14 @@ const CartItem: React.FC<CartIemProps> = (props: CartIemProps) => {
           </Grid>
           <Grid item xs={5} sx={{ textAlign: "left" }}>
             <Typography variant="h5" component="h5">
-              {item.name} x {amount}
+              {item.name}
             </Typography>
+
+            <ItemAmount
+              amount={item.amount}
+              increase={() => increaseItemAmount(item)}
+              decrease={() => decreaseItemAmount(item)}
+            />
           </Grid>
         </Grid>
       </Grid>

@@ -4,7 +4,6 @@ import { Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
-//send two functons and value
 interface ItemAmountProps {
   amount: number;
   increase: () => void;
@@ -18,7 +17,7 @@ const ItemAmount: React.FC<ItemAmountProps> = (props) => {
       <CustomButton
         color="primary"
         variant="outlined"
-        onClick={() => increase()}
+        onClick={() => decrease()}
       >
         <RemoveIcon />
       </CustomButton>
@@ -29,7 +28,7 @@ const ItemAmount: React.FC<ItemAmountProps> = (props) => {
       >
         {amount}
       </Typography>
-      <CustomButton color="primary" onClick={() => decrease()}>
+      <CustomButton color="primary" onClick={() => increase()}>
         <AddIcon />
       </CustomButton>
     </>

@@ -2,22 +2,20 @@ import { Box, Button, Card, Grid, Typography } from "@mui/material";
 import React, { useContext, useState } from "react";
 import Drawer from "@mui/material/Drawer";
 // import { ChildCare } from "@mui/icons-material";
-import {
-  ShoppingCartContext,
-  useShoppingContext,
-} from "../context/ShoppingCartContext";
-import StoreItem from "./StoreItem";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import CartItem from "./CartItem";
 import CartTotalItem from "./CartITotaltem";
 
-interface StoreItemProps {
+interface ShoppingCartProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
-const ShoppingCart: React.FC<StoreItemProps> = (props: StoreItemProps) => {
+const ShoppingCart: React.FC<ShoppingCartProps> = (
+  props: ShoppingCartProps
+) => {
   let { isOpen, onClose } = { ...props };
   const [open, setOpen] = useState(false);
 
@@ -26,17 +24,8 @@ const ShoppingCart: React.FC<StoreItemProps> = (props: StoreItemProps) => {
     onClose();
   };
 
-  const {
-    addToCart,
-    removeFromCart,
-    increaseItemAmount,
-    getItemAmount,
-    getTotalAmount,
-    decreaseCartAmount,
-    items,
-  } = useContext(ShoppingCartContext);
+  const { getTotalAmount, items } = useContext(ShoppingCartContext);
 
-  // const CartContent = <Box onClick={toggleDrawer(false)}>1...2..3</Box>;
   let amount = getTotalAmount() || 0;
 
   return (

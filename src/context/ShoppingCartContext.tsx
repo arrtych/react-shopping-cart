@@ -1,25 +1,14 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode,
-} from "react";
-import StoreItem, { StoreItemProps } from "../components/StoreItem";
+import { createContext, useContext, useState, ReactNode } from "react";
+import { ProductProps } from "../types/Product";
 
 type ShoppingCartContext = {
-  // openCart: () => void
-  // closeCart: () => void
   getItemAmount: (id: number) => number;
-  increaseItemAmount: (item: StoreItemProps) => void;
-  items: StoreItemProps[];
-  addToCart: (item: StoreItemProps) => void;
-  removeFromCart: (item: StoreItemProps) => void;
+  increaseItemAmount: (item: ProductProps) => void;
+  decreaseItemAmount: (item: ProductProps) => void;
+  items: ProductProps[];
+  addToCart: (item: ProductProps) => void;
+  removeFromCart: (item: ProductProps) => void;
   getTotalAmount: () => number;
-
-  decreaseCartAmount: (item: StoreItemProps) => void; //todo: remove id
-  // cartQuantity: number
-  // cartItems: CartItem[]
 };
 
 export const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -27,7 +16,7 @@ export const ShoppingCartContext = createContext({} as ShoppingCartContext);
 export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [items, setItems] = useState<StoreItemProps[]>([]);
+  const [items, setItems] = useState<ProductProps[]>([]);
 
   const [loading, setLoading] = useState(false);
 
@@ -35,7 +24,7 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
     return items.find((item) => item.id === id)?.amount || 0;
   }
 
-  function increaseItemAmount(storeItem: StoreItemProps) {
+  function increaseItemAmount(storeItem: ProductProps) {
     setItems((prevItems) => {
       if (prevItems.find((item) => item.id === storeItem.id) == null) {
         return [...prevItems, { ...storeItem, amount: 1 }];
@@ -50,17 +39,17 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
     });
   }
 
-  function addToCart(item: StoreItemProps) {
+  function addToCart(item: ProductProps) {
     setItems((prevItems) => {
       return [...prevItems, { ...item, amount: 1 }];
     });
   }
 
-  function removeFromCart(item: StoreItemProps) {
+  function removeFromCart(item: ProductProps) {
     setItems((prevItems) => prevItems.filter((i) => i.id !== item.id));
   }
 
-  function decreaseCartAmount(storeItem: StoreItemProps) {
+  function decreaseItemAmount(storeItem: ProductProps) {
     setItems((prevItems) => {
       if (prevItems.find((item) => item.id === storeItem.id)?.amount == 1) {
         return prevItems.filter((item) => item.id !== storeItem.id);
@@ -91,7 +80,7 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
         items,
         getItemAmount,
         increaseItemAmount,
-        decreaseCartAmount,
+        decreaseItemAmount,
         addToCart,
         removeFromCart,
         getTotalAmount,

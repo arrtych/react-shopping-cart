@@ -20,13 +20,7 @@ interface ShoppingCartIconProps {
 }
 
 const CustomShoppingCartIcon: React.FC<ShoppingCartIconProps> = ({}) => {
-  const {
-    addToCart,
-    removeFromCart,
-    increaseItemAmount,
-    getTotalAmount,
-    decreaseCartAmount,
-  } = useContext(ShoppingCartContext);
+  const { getTotalAmount } = useContext(ShoppingCartContext);
 
   let amount = getTotalAmount() || 0;
 
@@ -36,10 +30,5 @@ const CustomShoppingCartIcon: React.FC<ShoppingCartIconProps> = ({}) => {
     </StyledBadge>
   );
 };
-
-// anchorOrigin={{
-//   vertical: 'bottom',
-//   horizontal: 'right',
-// }}
 
 export default CustomShoppingCartIcon;
