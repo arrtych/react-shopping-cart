@@ -5,6 +5,7 @@ import { OverridableStringUnion } from "@mui/types";
 
 interface ButtonProps {
   color?: ButtonOwnProps["color"];
+  sx?: ButtonOwnProps["sx"];
   variant?: ButtonOwnProps["variant"];
   //   icon?: any; // todo:change
   children?: ReactNode;
@@ -12,14 +13,14 @@ interface ButtonProps {
 }
 
 const CustomButton: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const { children, color, variant, onClick } = {
+  const { children, color, variant, onClick, sx } = {
     variant: "contained" as ButtonOwnProps["variant"],
     ...props,
   };
 
   return (
     <>
-      <Button variant={variant} color={color} onClick={onClick}>
+      <Button variant={variant} sx={sx} color={color} size="small" onClick={onClick}>
         {children}
       </Button>
     </>

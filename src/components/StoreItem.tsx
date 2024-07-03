@@ -8,6 +8,7 @@ import {
   ShoppingCartContext,
   useShoppingContext,
 } from "../context/ShoppingCartContext";
+import ItemAmount from "./ItemAmount";
 
 export interface StoreItemProps {
   //@todo: rename
@@ -61,26 +62,51 @@ const StoreItem: React.FC<StoreItemProps> = (props: StoreItemProps) => {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           {isInCart ? (
             <>
-              <CustomButton color="error" onClick={() => removeFromCart(props)}>
-                Remove
-              </CustomButton>
-              <CustomButton
-                color="primary"
-                onClick={() => increaseItemAmount(props)}
-              >
-                <AddIcon />
-              </CustomButton>
-              <div></div>
-              <Typography>{amount}</Typography>
-              <CustomButton
+              {/* <CustomButton
                 color="primary"
                 variant="outlined"
                 onClick={() => decreaseCartAmount(props)}
               >
                 <RemoveIcon />
+              </CustomButton>
+              <Typography
+                sx={{
+                  padding: "0 1.25rem",
+                }}
+              >
+                {amount}
+              </Typography>
+              <CustomButton
+                color="primary"
+                onClick={() => increaseItemAmount(props)}
+              >
+                <AddIcon />
+              </CustomButton> */}
+              <ItemAmount
+                amount={amount}
+                increase={() => decreaseCartAmount(props)}
+                decrease={() => increaseItemAmount(props)}
+              />
+
+              <CustomButton
+                sx={{
+                  marginLeft: "1rem",
+                }}
+                color="error"
+                onClick={() => removeFromCart(props)}
+              >
+                Remove
               </CustomButton>
             </>
           ) : (

@@ -8,6 +8,7 @@ import {
 } from "../context/ShoppingCartContext";
 import StoreItem from "./StoreItem";
 import CartItem from "./CartItem";
+import CartTotalItem from "./CartITotaltem";
 
 interface StoreItemProps {
   isOpen: boolean;
@@ -36,6 +37,8 @@ const ShoppingCart: React.FC<StoreItemProps> = (props: StoreItemProps) => {
   } = useContext(ShoppingCartContext);
 
   // const CartContent = <Box onClick={toggleDrawer(false)}>1...2..3</Box>;
+  let amount = getTotalAmount() || 0;
+
   return (
     <>
       {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
@@ -50,11 +53,19 @@ const ShoppingCart: React.FC<StoreItemProps> = (props: StoreItemProps) => {
             </Grid>
             {/* <Box onClick={toggleDrawer(false)}>dsfdjlkdsjkl</Box> */}
           </Grid>
-          <Grid container columns={{ xs: 12 }} sx={{ rowGap: 3 }}>
-            {items.map((item) => (
-              <CartItem item={item} key={item.id} />
-            ))}
-          </Grid>
+
+          {items.length > 0 ? (
+            <>
+              <Grid container columns={{ xs: 12 }} sx={{ rowGap: 3 }}>
+                {items.map((item) => (
+                  <CartItem item={item} key={item.id} />
+                ))}
+              </Grid>
+              <CartTotalItem />
+            </>
+          ) : (
+            <div>No items at the moment</div>
+          )}
         </Box>
       </Drawer>
     </>
