@@ -9,6 +9,7 @@ type ShoppingCartContext = {
   addToCart: (item: ProductProps) => void;
   removeFromCart: (item: ProductProps) => void;
   getTotalAmount: () => number;
+  getItemTotalAmount: (id: number) => number;
 };
 
 export const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -74,10 +75,22 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
     return totalAmount;
   }
 
+  /**
+   * Method which calculates total price of item by price and amount values
+   *
+   * @param id - The id of the product
+   * @returns number - The total price of the item
+   */
+  function getItemTotalAmount(id: number): number {
+    const product = items.find((p) => p.id === id);
+    return product ? product.price * product.amount : 0;
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
         items,
+        getItemTotalAmount,
         getItemAmount,
         increaseItemAmount,
         decreaseItemAmount,
@@ -91,6 +104,10 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
+/**
+ *
+ * @returns
+ */
 export const useShoppingContext = () => {
   const context = useContext(ShoppingCartContext);
   if (!context) {

@@ -1,10 +1,25 @@
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Grid,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 import React, { useContext, useState } from "react";
 import Drawer from "@mui/material/Drawer";
 // import { ChildCare } from "@mui/icons-material";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import CartItem from "./CartItem";
 import CartTotalItem from "./CartITotaltem";
+import Paper from "@mui/material/Paper";
+import CustomButton from "./CustomButton";
 
 interface ShoppingCartProps {
   isOpen: boolean;
@@ -24,10 +39,12 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
     onClose();
   };
 
-  const { getTotalAmount, items } = useContext(ShoppingCartContext);
+  const { getTotalAmount, removeFromCart, getItemTotalAmount, items } =
+    useContext(ShoppingCartContext);
+
+  const tableHeaders = ["", "Name", "Price", "Amount", "Subtotal", ""];
 
   let amount = getTotalAmount() || 0;
-
   return (
     <>
       {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
@@ -45,17 +62,77 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
 
           {items.length > 0 ? (
             <>
-              <Grid container columns={{ xs: 12 }} sx={{ rowGap: 3 }}>
+              {/* <Grid container columns={{ xs: 12 }} sx={{ rowGap: 3 }}>
                 {items.map((item) => (
                   <CartItem item={item} key={item.id} />
                 ))}
               </Grid>
+              <CartTotalItem /> */}
+
+              <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      {tableHeaders.map((header, idx) => (
+                        <TableCell
+                          key={`${header}-${idx}`}
+                          sx={{ fontWeight: "bold" }}
+                          align="center"
+                        >
+                          {header}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {items.map((item) => (
+                      <TableRow
+                        key={item.name}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          <img
+                            src={item.imgUrl}
+                            style={{
+                              height: "100px",
+                              width: "125px",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </TableCell>
+
+                        <TableCell align="center">{item.name}</TableCell>
+                        <TableCell align="center">{item.price}</TableCell>
+                        <TableCell align="center">{item.amount}</TableCell>
+                        <TableCell align="center">
+                          {getItemTotalAmount(item.id)}
+                        </TableCell>
+                        <TableCell align="center">
+                          <CustomButton
+                            color="primary"
+                            variant="outlined"
+                            onClick={() => removeFromCart(item)}
+                          >
+                            <ClearIcon />
+                          </CustomButton>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+
               <CartTotalItem />
             </>
           ) : (
             <div>No items at the moment</div>
           )}
         </Box>
+
+        {/* //todo: closeIcon button */}
+        {/* <Button onClick={toggleDrawer(false)}>Close drawer</Button> */}
       </Drawer>
     </>
   );
