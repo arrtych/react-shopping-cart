@@ -8,8 +8,9 @@ type ShoppingCartContext = {
   items: ProductProps[];
   addToCart: (item: ProductProps) => void;
   removeFromCart: (item: ProductProps) => void;
-  getTotalAmount: () => number;
+  getTotalPrice: () => number;
   getItemTotalAmount: (id: number) => number;
+  getCartItemsAmount: () => number;
 };
 
 export const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -65,14 +66,11 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
     });
   }
 
-  function getTotalAmount() {
-    const amounts = items.map((item) => item.amount);
-    const totalAmount = amounts.reduce(
-      (accumulator, currentAmount) => accumulator + currentAmount,
+  function getTotalPrice() {
+    return items.reduce(
+      (total, product) => total + product.price * product.amount,
       0
     );
-
-    return totalAmount;
   }
 
   /**
@@ -86,6 +84,10 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
     return product ? product.price * product.amount : 0;
   }
 
+  function getCartItemsAmount() {
+    return items.reduce((total, product) => total + product.amount, 0);
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -96,7 +98,8 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
         decreaseItemAmount,
         addToCart,
         removeFromCart,
-        getTotalAmount,
+        getTotalPrice,
+        getCartItemsAmount,
       }}
     >
       {children}

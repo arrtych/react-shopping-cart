@@ -20,9 +20,9 @@ interface ShoppingCartIconProps {
 }
 
 const CustomShoppingCartIcon: React.FC<ShoppingCartIconProps> = ({}) => {
-  const { getTotalAmount } = useContext(ShoppingCartContext);
+  const { getCartItemsAmount } = useContext(ShoppingCartContext);
 
-  let amount = getTotalAmount() || 0;
+  let amount = getCartItemsAmount();
 
   return (
     <StyledBadge badgeContent={amount} color={"warning"}>

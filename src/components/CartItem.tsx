@@ -48,7 +48,7 @@ const CartItem: React.FC<CartIemProps> = (props: CartIemProps) => {
       </Grid>
 
       <Grid item xs={6} sx={{ pr: 2, textAlign: "right" }}>
-        {totalAmount + "$"}
+        {totalAmount + " " + item.currency}
         <CustomButton
           color="primary"
           variant="outlined"

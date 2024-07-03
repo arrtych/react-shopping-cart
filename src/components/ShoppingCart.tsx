@@ -20,6 +20,7 @@ import CartItem from "./CartItem";
 import CartTotalItem from "./CartITotaltem";
 import Paper from "@mui/material/Paper";
 import CustomButton from "./CustomButton";
+import { defaultCurrency } from "../utils/constants";
 
 interface ShoppingCartProps {
   isOpen: boolean;
@@ -39,12 +40,14 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
     onClose();
   };
 
-  const { getTotalAmount, removeFromCart, getItemTotalAmount, items } =
+  const { getTotalPrice, removeFromCart, getItemTotalAmount, items } =
     useContext(ShoppingCartContext);
 
   const tableHeaders = ["", "Name", "Price", "Amount", "Subtotal", ""];
 
-  let amount = getTotalAmount() || 0;
+  let amount = getTotalPrice() || 0;
+  const currency = defaultCurrency;
+
   return (
     <>
       {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
@@ -104,9 +107,12 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                         </TableCell>
 
                         <TableCell align="center">{item.name}</TableCell>
-                        <TableCell align="center">{item.price}</TableCell>
+                        <TableCell align="center">
+                          {currency} {item.price}
+                        </TableCell>
                         <TableCell align="center">{item.amount}</TableCell>
                         <TableCell align="center">
+                          {currency}
                           {getItemTotalAmount(item.id)}
                         </TableCell>
                         <TableCell align="center">

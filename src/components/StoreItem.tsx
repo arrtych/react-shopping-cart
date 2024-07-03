@@ -4,12 +4,13 @@ import CustomButton from "./CustomButton";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import ItemAmount from "./ItemAmount";
 import { ProductProps } from "../types/Product";
+import { defaultCurrency } from "../utils/constants";
 
 //todo: useMediaQuery for card swhong on mobile by one card
 // local
 const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   const { currency, id, name, price, imgUrl } = {
-    currency: "$",
+    currency: defaultCurrency,
     ...props,
   };
   const {
@@ -40,7 +41,8 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
               <Typography variant="h4" component="span">
-                {price} {currency}
+                {currency}
+                {price}
               </Typography>
             </Grid>
           </Grid>
