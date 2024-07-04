@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import React, { useContext, useState } from "react";
 import Drawer from "@mui/material/Drawer";
-// import { ChildCare } from "@mui/icons-material";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import CartTotalItem from "./CartITotaltem";
 import Paper from "@mui/material/Paper";
@@ -21,6 +20,8 @@ import CustomButton from "./CustomButton";
 import { defaultCurrency } from "../utils/constants";
 import ClearIcon from "@mui/icons-material/Clear";
 import { IconButton } from "@mui/material";
+import { ProductProps } from "../types/Product";
+import NoItems from "./NoItems";
 
 interface ShoppingCartProps {
   isOpen: boolean;
@@ -40,13 +41,13 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
     onClose();
   };
 
-  const { getTotalPrice, removeFromCart, getItemTotalAmount, items } =
+  const { removeFromCart, getItemTotalAmount, items } =
     useContext(ShoppingCartContext);
 
   const tableHeaders = ["", "Name", "Price", "Amount", "Subtotal", ""];
 
-  const tableItems: ((item: any) => JSX.Element)[] = [
-    (item: any) => (
+  const tableItems: ((item: ProductProps) => JSX.Element)[] = [
+    (item: ProductProps) => (
       <img
         src={item.imgUrl}
         style={{
@@ -56,20 +57,21 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
         }}
       />
     ),
-    (item: any) => <>{item.name}</>,
-    (item: any) => (
+    (item: ProductProps) => <>{item.name}</>,
+    (item: ProductProps) => (
       <>
-        {currency} {item.price}
+        {defaultCurrency}
+        {item.price}
       </>
     ),
-    (item: any) => <> {item.amount}</>,
-    (item: any) => (
+    (item: ProductProps) => <> {item.amount}</>,
+    (item: ProductProps) => (
       <>
-        {currency}
+        {defaultCurrency}
         {getItemTotalAmount(item.id)}
       </>
     ),
-    (item: any) => (
+    (item: ProductProps) => (
       <>
         <CustomButton
           color="primary"
@@ -81,9 +83,6 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
       </>
     ),
   ];
-
-  let amount = getTotalPrice() || 0;
-  const currency = defaultCurrency;
 
   return (
     <>
@@ -125,7 +124,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                         <TableCell
                           key={`${header}-${idx}`}
                           sx={{ fontWeight: "bold", fontSize: "1rem" }}
-                          align="center"
+                          align="left"
                         >
                           {header}
                         </TableCell>
@@ -143,13 +142,12 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                         {tableItems.map((content, idx) => (
                           <TableCell
                             key={idx}
-                            align={idx == 0 ? "left" : "center"}
                             sx={{
                               fontSize: "1rem",
                               ...(idx == tableItems.length - 1 && {
                                 pr: 0,
                               }),
-                            }} //sx={{ pr: 0 }}
+                            }}
                           >
                             {content(item)}
                           </TableCell>
@@ -196,7 +194,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
               <CartTotalItem />
             </>
           ) : (
-            <div>No items at the moment</div>
+            <NoItems />
           )}
         </Box>
       </Drawer>
