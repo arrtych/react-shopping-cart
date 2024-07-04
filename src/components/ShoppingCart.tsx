@@ -22,6 +22,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { IconButton } from "@mui/material";
 import { ProductProps } from "../types/Product";
 import NoItems from "./NoItems";
+import ItemAmount from "./ItemAmount";
 
 interface ShoppingCartProps {
   isOpen: boolean;
@@ -41,11 +42,16 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
     onClose();
   };
 
-  const { removeFromCart, getItemTotalAmount, items } =
-    useContext(ShoppingCartContext);
+  const {
+    removeFromCart,
+    getItemTotalAmount,
+    increaseItemAmount,
+    decreaseItemAmount,
+    items,
+  } = useContext(ShoppingCartContext);
 
   const tableHeaders = ["", "Name", "Price", "Amount", "Subtotal", ""];
-
+  //todo: column amount header to center
   const tableItems: ((item: ProductProps) => JSX.Element)[] = [
     (item: ProductProps) => (
       <img
@@ -64,7 +70,14 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
         {item.price}
       </>
     ),
-    (item: ProductProps) => <> {item.amount}</>,
+    (item: ProductProps) => (
+      <ItemAmount
+        amount={item.amount}
+        type={"cart"}
+        increase={() => increaseItemAmount(item)}
+        decrease={() => decreaseItemAmount(item)}
+      />
+    ),
     (item: ProductProps) => (
       <>
         {defaultCurrency}
@@ -113,7 +126,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
               </Grid>
               <CartTotalItem /> */}
 
-              <TableContainer component={Paper}>
+              <TableContainer>
                 <Table
                   sx={{ minWidth: 650, fontSize: "16px" }}
                   aria-label="simple table"
@@ -124,7 +137,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                         <TableCell
                           key={`${header}-${idx}`}
                           sx={{ fontWeight: "bold", fontSize: "1rem" }}
-                          align="left"
+                          align="left" //todo: change amount by item
                         >
                           {header}
                         </TableCell>

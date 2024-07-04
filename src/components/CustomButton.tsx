@@ -2,6 +2,7 @@ import { Button, ButtonOwnProps } from "@mui/material";
 import React, { ReactNode } from "react";
 import { JsxElement } from "typescript";
 import { OverridableStringUnion } from "@mui/types";
+import { IconButton } from "@mui/material";
 
 interface ButtonProps {
   color?: ButtonOwnProps["color"];
@@ -10,6 +11,7 @@ interface ButtonProps {
   //   icon?: any; // todo:change
   children?: ReactNode;
   onClick?: () => void;
+  type?: "cart" | "";
 }
 
 const CustomButton: React.FC<ButtonProps> = (props: ButtonProps) => {
@@ -20,9 +22,21 @@ const CustomButton: React.FC<ButtonProps> = (props: ButtonProps) => {
 
   return (
     <>
-      <Button variant={variant} sx={sx} color={color} size="small" onClick={onClick}>
-        {children}
-      </Button>
+      {props.type == "cart" ? (
+        <IconButton onClick={onClick} sx={sx}>
+          {children}
+        </IconButton>
+      ) : (
+        <Button
+          variant={variant}
+          sx={sx}
+          color={color}
+          size="small"
+          onClick={onClick}
+        >
+          {children}
+        </Button>
+      )}
     </>
   );
 };
