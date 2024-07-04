@@ -22,5 +22,17 @@
     "name": "Car",
     "price": 14000,
     "imgUrl": "/imgs/car.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Car2",
+    "price": 14000,
+    "imgUrl": "/imgs/car.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Banana2",
+    "price": 1.05,
+    "imgUrl": "/imgs/banana.jpg"
   }
 ]

@@ -20,9 +20,15 @@ const Store: React.FC = () => {
       <h2>Store Page</h2>
       <p>Welcome to the Store Page</p>
 
-      <Grid container spacing={2} columns={{ xs: 12 }}>
+      <Grid
+        container
+        spacing={2}
+        columns={{ xs: 12 }}
+        sx={{ pl: 4, pr: 4 }}
+        className="storeItemContainer"
+      >
         {storeItems.map((item, index) => (
-          <Grid item key={index} xs={6}>
+          <Grid item key={index} xs={6} sx={{ mb: 3 }}>
             <StoreItem amount={0} {...item} />
           </Grid>
         ))}

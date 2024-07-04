@@ -51,7 +51,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
   } = useContext(ShoppingCartContext);
 
   const tableHeaders = ["", "Name", "Price", "Amount", "Subtotal", ""];
-  //todo: column amount header to center
+
   const tableItems: ((item: ProductProps) => JSX.Element)[] = [
     (item: ProductProps) => (
       <img
@@ -110,7 +110,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
               </Typography>
             </Grid>
             <Grid item xs={1} sx={{ textAlign: "right", pr: 0 }}>
-              <IconButton onClick={toggleDrawer(false)}>
+              <IconButton onClick={toggleDrawer(false)} color="primary">
                 <ClearIcon />
               </IconButton>
             </Grid>

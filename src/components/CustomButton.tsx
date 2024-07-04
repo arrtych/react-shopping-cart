@@ -23,7 +23,7 @@ const CustomButton: React.FC<ButtonProps> = (props: ButtonProps) => {
   return (
     <>
       {props.type == "cart" ? (
-        <IconButton onClick={onClick} sx={sx}>
+        <IconButton onClick={onClick} sx={sx} color="primary">
           {children}
         </IconButton>
       ) : (

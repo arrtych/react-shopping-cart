@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import CustomButton from "./CustomButton";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
@@ -24,8 +24,14 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   let amount = getItemAmount(id);
   const isInCart = !!amount;
   return (
-    <>
-      <Grid container spacing={4} columns={{ xs: 12 }}>
+    <Box sx={{ boxShadow: 1 }}>
+      <Grid
+        container
+        spacing={4}
+        columns={{ xs: 12 }}
+        className="storeItem"
+        sx={{ mb: 3, borderRadius: "1rem" }}
+      >
         <Grid item xs={12}>
           <img
             src={imgUrl}
@@ -35,12 +41,12 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
         <Grid item xs={12}>
           <Grid container spacing={2} columns={{ xs: 12 }}>
             <Grid item xs={6}>
-              <Typography variant="h3" gutterBottom>
+              <Typography variant="h5" gutterBottom sx={{ ml: 3 }}>
                 {name}
               </Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
-              <Typography variant="h4" component="span">
+              <Typography variant="h5" sx={{ mr: 3, color: "#7b7b7b" }}>
                 {currency}
                 {price}
               </Typography>
@@ -55,6 +61,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            mb: 2,
           }}
         >
           {isInCart ? (
@@ -82,7 +89,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
           )}
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 
