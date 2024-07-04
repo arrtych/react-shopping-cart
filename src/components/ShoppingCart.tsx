@@ -11,16 +11,16 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import ClearIcon from "@mui/icons-material/Clear";
 import React, { useContext, useState } from "react";
 import Drawer from "@mui/material/Drawer";
 // import { ChildCare } from "@mui/icons-material";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
-import CartItem from "./CartItem";
 import CartTotalItem from "./CartITotaltem";
 import Paper from "@mui/material/Paper";
 import CustomButton from "./CustomButton";
 import { defaultCurrency } from "../utils/constants";
+import ClearIcon from "@mui/icons-material/Clear";
+import { IconButton } from "@mui/material";
 
 interface ShoppingCartProps {
   isOpen: boolean;
@@ -45,6 +45,43 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
 
   const tableHeaders = ["", "Name", "Price", "Amount", "Subtotal", ""];
 
+  const tableItems: ((item: any) => JSX.Element)[] = [
+    (item: any) => (
+      <img
+        src={item.imgUrl}
+        style={{
+          height: "100px",
+          width: "125px",
+          objectFit: "cover",
+        }}
+      />
+    ),
+    (item: any) => <>{item.name}</>,
+    (item: any) => (
+      <>
+        {currency} {item.price}
+      </>
+    ),
+    (item: any) => <> {item.amount}</>,
+    (item: any) => (
+      <>
+        {currency}
+        {getItemTotalAmount(item.id)}
+      </>
+    ),
+    (item: any) => (
+      <>
+        <CustomButton
+          color="primary"
+          variant="outlined"
+          onClick={() => removeFromCart(item)}
+        >
+          <ClearIcon />
+        </CustomButton>
+      </>
+    ),
+  ];
+
   let amount = getTotalPrice() || 0;
   const currency = defaultCurrency;
 
@@ -55,10 +92,15 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
       <Drawer open={isOpen} anchor="right" onClose={onClose}>
         <Box sx={{ width: "50rem" }}>
           <Grid container columns={{ xs: 12 }}>
-            <Grid item xs={12}>
-              <Typography variant="h2" component="h2">
+            <Grid item xs={11} sx={{ pl: 2 }}>
+              <Typography variant="h4" component="h4">
                 Cart
               </Typography>
+            </Grid>
+            <Grid item xs={1} sx={{ textAlign: "right", pr: 0 }}>
+              <IconButton onClick={toggleDrawer(false)}>
+                <ClearIcon />
+              </IconButton>
             </Grid>
             {/* <Box onClick={toggleDrawer(false)}>dsfdjlkdsjkl</Box> */}
           </Grid>
@@ -73,13 +115,16 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
               <CartTotalItem /> */}
 
               <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <Table
+                  sx={{ minWidth: 650, fontSize: "16px" }}
+                  aria-label="simple table"
+                >
                   <TableHead>
                     <TableRow>
                       {tableHeaders.map((header, idx) => (
                         <TableCell
                           key={`${header}-${idx}`}
-                          sx={{ fontWeight: "bold" }}
+                          sx={{ fontWeight: "bold", fontSize: "1rem" }}
                           align="center"
                         >
                           {header}
@@ -95,7 +140,22 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                       >
-                        <TableCell component="th" scope="row">
+                        {tableItems.map((content, idx) => (
+                          <TableCell
+                            key={idx}
+                            align={idx == 0 ? "left" : "center"}
+                            sx={{
+                              fontSize: "1rem",
+                              ...(idx == tableItems.length - 1 && {
+                                pr: 0,
+                              }),
+                            }} //sx={{ pr: 0 }}
+                          >
+                            {content(item)}
+                          </TableCell>
+                        ))}
+
+                        {/* <TableCell scope="row">
                           <img
                             src={item.imgUrl}
                             style={{
@@ -106,7 +166,10 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                           />
                         </TableCell>
 
-                        <TableCell align="center">{item.name}</TableCell>
+                        <TableCell align="center" sx={{ fontSize: "1rem" }}>
+                          {item.name}
+                        </TableCell>
+
                         <TableCell align="center">
                           {currency} {item.price}
                         </TableCell>
@@ -115,7 +178,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                           {currency}
                           {getItemTotalAmount(item.id)}
                         </TableCell>
-                        <TableCell align="center">
+                        <TableCell align="center" sx={{ pr: 0 }}>
                           <CustomButton
                             color="primary"
                             variant="outlined"
@@ -123,7 +186,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                           >
                             <ClearIcon />
                           </CustomButton>
-                        </TableCell>
+                        </TableCell> */}
                       </TableRow>
                     ))}
                   </TableBody>
@@ -136,9 +199,6 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
             <div>No items at the moment</div>
           )}
         </Box>
-
-        {/* //todo: closeIcon button */}
-        {/* <Button onClick={toggleDrawer(false)}>Close drawer</Button> */}
       </Drawer>
     </>
   );
