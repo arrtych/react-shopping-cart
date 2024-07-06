@@ -6,6 +6,8 @@ import { capitalizeFirstLetter } from "../utils/utils";
 import { useState } from "react";
 import "../styles/Navbar.css";
 import CustomShoppingCartIcon from "./CustomShoppingCartIcon";
+import Search from "./Search";
+import storeItems from "../data/store.json";
 
 interface NavbarProps {
   isOpen: boolean;
@@ -20,6 +22,9 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const isHome = (item: string) => {
     return item == "home";
   };
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredItems, setFilteredItems] = useState(storeItems);
 
   // const toggleDrawer = (newOpen: boolean) => () => {
   //   setOpen(newOpen);
@@ -62,6 +67,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
               {capitalizeFirstLetter(item)}
             </Typography>
           ))}
+
+          <Search />
         </Box>
 
         <Button

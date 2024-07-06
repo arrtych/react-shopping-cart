@@ -8,12 +8,12 @@ import {
 } from "../context/ShoppingCartContext";
 
 const Store: React.FC = () => {
-  const context = useContext(ShoppingCartContext);
+  // const context = useContext(ShoppingCartContext);
 
-  useEffect(() => {
-    const x = context;
-    console.log("items", x);
-  }, []);
+  // useEffect(() => {
+  //   const x = context;
+  //   console.log("items", x);
+  // }, []);
 
   return (
     <div>
@@ -27,8 +27,10 @@ const Store: React.FC = () => {
         sx={{ pl: 4, pr: 4 }}
         className="storeItemContainer"
       >
+        {/* filter databased on search query,  context as idea */}
         {storeItems.map((item, index) => (
-          <Grid item key={index} xs={6} sx={{ mb: 3 }}>
+          <Grid item key={index} xs={4} sx={{ mb: 3 }}>
+            {/*  lg={12} */}
             <StoreItem amount={0} {...item} />
           </Grid>
         ))}
