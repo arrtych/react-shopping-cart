@@ -4,14 +4,12 @@ import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 
 export interface SearchProps {
-  onchange?: () => void;
-  value?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
 }
 
 const Search: React.FC<SearchProps> = (props: SearchProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const { value } = { ...props };
+  const { value, onChange } = { ...props };
   return (
     <Paper
       component="form"
@@ -21,11 +19,8 @@ const Search: React.FC<SearchProps> = (props: SearchProps) => {
         sx={{ ml: 1, flex: 1 }}
         placeholder="search"
         inputProps={{ "aria-label": "search google maps" }}
-        value={searchTerm}
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-          console.log("onchange", e.target.value);
-        }}
+        value={value}
+        onChange={onChange}
       />
       <IconButton type="button" aria-label="search">
         <SearchIcon />

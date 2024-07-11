@@ -1,24 +1,38 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import storeItems from "../data/store.json";
-import { Grid } from "@mui/material";
+import { Grid, InputBase } from "@mui/material";
 import StoreItem from "../components/StoreItem";
 import {
   ShoppingCartContext,
   useShoppingContext,
 } from "../context/ShoppingCartContext";
+import Search from "../components/Search";
 
 const Store: React.FC = () => {
-  // const context = useContext(ShoppingCartContext);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredItems, setFilteredItems] = useState(storeItems);
 
-  // useEffect(() => {
-  //   const x = context;
-  //   console.log("items", x);
-  // }, []);
+  useEffect(() => {
+    setFilteredItems(
+      storeItems.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm]);
 
   return (
-    <div>
+    <>
       <h2>Store Page</h2>
-      <p>Welcome to the Store Page</p>
+      {/* <p>Welcome to the Store Page</p> */}
+
+      <Grid container sx={{ p: 4 }}>
+        <Grid item xs={12} sx={{ textAlign: "right" }}>
+          <Search
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </Grid>
+      </Grid>
 
       <Grid
         container
@@ -27,15 +41,13 @@ const Store: React.FC = () => {
         sx={{ pl: 4, pr: 4 }}
         className="storeItemContainer"
       >
-        {/* filter databased on search query,  context as idea */}
-        {storeItems.map((item, index) => (
+        {filteredItems.map((item, index) => (
           <Grid item key={index} xs={4} sx={{ mb: 3 }}>
-            {/*  lg={12} */}
             <StoreItem amount={0} {...item} />
           </Grid>
         ))}
       </Grid>
-    </div>
+    </>
   );
 };
 
