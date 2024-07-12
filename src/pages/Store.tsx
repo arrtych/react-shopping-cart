@@ -1,11 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import storeItems from "../data/store.json";
-import { Grid, InputBase } from "@mui/material";
+import { Grid } from "@mui/material";
 import StoreItem from "../components/StoreItem";
-import {
-  ShoppingCartContext,
-  useShoppingContext,
-} from "../context/ShoppingCartContext";
 import Search from "../components/Search";
 
 const Store: React.FC = () => {
@@ -20,16 +16,27 @@ const Store: React.FC = () => {
     );
   }, [searchTerm]);
 
+  const handleSearchClose = () => {
+    setSearchTerm("");
+  };
+
   return (
     <>
       <h2>Store Page</h2>
       {/* <p>Welcome to the Store Page</p> */}
 
-      <Grid container sx={{ p: 4 }}>
-        <Grid item xs={12} sx={{ textAlign: "right" }}>
+      <Grid
+        container
+        sx={{ pl: 4, pt: 4, pb: 8, pr: 4 }}
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid item xs={4} sx={{}}>
           <Search
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onClose={handleSearchClose}
           />
         </Grid>
       </Grid>
