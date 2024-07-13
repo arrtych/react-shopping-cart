@@ -26,6 +26,11 @@ const Carousel: React.FC = () => {
         options={{
           type: "loop",
           width: "75%",
+          gap: "3em",
+          // easingFunc: ( t: number ) => number = t => 1 - Math.pow( 1 - t, 4 )
+          easingFunc: (t: number) => {
+            return 9 - Math.pow(1 - t, 4);
+          },
           // autoplay: true,
         }}
       >

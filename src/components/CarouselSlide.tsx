@@ -17,8 +17,8 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
   const { product } = { ...props };
   const { addToCart } = useContext(ShoppingCartContext);
   return (
-    <>
-      <SplideSlide>
+    <SplideSlide>
+      <div className="splideSlide-container">
         <Grid
           container
           sx={{
@@ -90,8 +90,8 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
             </Grid>
           </Grid>
         </Grid>
-      </SplideSlide>
-    </>
+      </div>
+    </SplideSlide>
   );
 };
 

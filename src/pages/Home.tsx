@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <div
       style={{
-        background: "linear-gradient(to bottom, #b8c6df 0%, #6d88b7 100%)",
+        // background: "linear-gradient(to bottom, #b8c6df 0%, #6d88b7 100%)",
         height: "calc(100vh - 64px)",
       }}
     >

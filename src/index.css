@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(rgb(184, 198, 223) 0%, rgb(109, 136, 183) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 code {
@@ -18,4 +22,15 @@ code {
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border-radius: 50px;
   overflow: visible;
+}
+
+.splide__arrow svg {
+  fill: blue !important;
+}
+
+.store-item:hover {
+  /* transform: scale(1.05); */
+  transform: scale(0.9);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  will-change: transform, box-shadow;
 }

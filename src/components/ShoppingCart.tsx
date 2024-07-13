@@ -58,7 +58,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
         src={item.imgUrl}
         style={{
           height: "100px",
-          width: "125px",
+          width: "100px",
           objectFit: "cover",
         }}
       />
@@ -102,7 +102,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
       {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
       {/* onClick={toggleDrawer(false)} */}
       <Drawer open={isOpen} anchor="right" onClose={onClose}>
-        <Box sx={{ width: "50rem" }}>
+        <Box sx={{ width: "50rem", mt: "3rem", ml: "0.75rem", mr: "0.75rem" }}>
           <Grid container columns={{ xs: 12 }}>
             <Grid item xs={11} sx={{ pl: 2 }}>
               <Typography variant="h4" component="h4">
@@ -119,13 +119,6 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
 
           {items.length > 0 ? (
             <>
-              {/* <Grid container columns={{ xs: 12 }} sx={{ rowGap: 3 }}>
-                {items.map((item) => (
-                  <CartItem item={item} key={item.id} />
-                ))}
-              </Grid>
-              <CartTotalItem /> */}
-
               <TableContainer>
                 <Table
                   sx={{ minWidth: 650, fontSize: "16px" }}
@@ -137,7 +130,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                         <TableCell
                           key={`${header}-${idx}`}
                           sx={{ fontWeight: "bold", fontSize: "1rem" }}
-                          align="left" //todo: change amount by item
+                          align="left"
                         >
                           {header}
                         </TableCell>
@@ -150,6 +143,10 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                         key={item.name}
                         sx={{
                           "&:last-child td, &:last-child th": { border: 0 },
+                          "&:hover": {
+                            backgroundColor: "#f5f5f5",
+                            cursor: "pointer",
+                          },
                         }}
                       >
                         {tableItems.map((content, idx) => (

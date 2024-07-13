@@ -24,7 +24,15 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   let amount = getItemAmount(id);
   const isInCart = !!amount;
   return (
-    <Box sx={{ boxShadow: 1 }}>
+    <Box
+      sx={{
+        background: "#ffffff",
+        borderRadius: "15px",
+        boxShadow: "rgb(38, 57, 77) 0px 20px 30px -10px",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      }}
+      className="store-item"
+    >
       <Grid
         container
         spacing={4}

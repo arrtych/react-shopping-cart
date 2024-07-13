@@ -13,6 +13,9 @@ const NoItems: React.FC = () => {
           textAlign: "center",
           color: "#8b8b8b",
           alignItems: "center",
+          margin: 0,
+          position: "absolute",
+          top: "50%",
         }}
       >
         <Grid item xs={12}>

@@ -2,6 +2,7 @@ import { Button, ButtonOwnProps, Grid, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import { defaultCurrency } from "../utils/constants";
+import { round } from "../utils/utils";
 
 const CartTotalItem: React.FC = () => {
   const { getTotalPrice } = useContext(ShoppingCartContext);
@@ -14,7 +15,7 @@ const CartTotalItem: React.FC = () => {
         <Grid item xs={12} sx={{ textAlign: "right" }}>
           <Typography variant="h4" component="h4">
             Total : {defaultCurrency}
-            {amount}
+            {round(amount)}
           </Typography>
         </Grid>
       </Grid>

@@ -67,9 +67,11 @@ const Navbar: React.FC<NavbarProps> = (props) => {
 
         <Button
           variant="outlined"
+          // size="small"
           style={{
-            width: "60px",
-            height: "60px",
+            minWidth: "44px",
+            width: "44px",
+            height: "44px",
             borderRadius: "50%",
           }}
           onClick={onClick}
