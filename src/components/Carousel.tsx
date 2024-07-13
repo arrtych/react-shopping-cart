@@ -13,7 +13,7 @@ import storeItems from "../data/store.json";
 import CarouselSlide from "./CarouselSlide";
 
 const Carousel: React.FC = () => {
-  const productIds = [1, 4];
+  const productIds = [1, 6];
 
   const filteredProducts = storeItems.filter((product) =>
     productIds.includes(product.id)
@@ -25,13 +25,15 @@ const Carousel: React.FC = () => {
         aria-label="product-slider"
         options={{
           type: "loop",
-          autoplay: true,
+          width: "75%",
+          // autoplay: true,
         }}
       >
         {filteredProducts.map((product) => (
-          <SplideSlide>
-            <CarouselSlide product={{ ...product, amount: 1 }} />
-          </SplideSlide>
+          <CarouselSlide
+            key={`product-${product.id}`}
+            product={{ ...product, amount: 1 }}
+          />
         ))}
       </Splide>
     </>

@@ -1,38 +1,44 @@
 [
   {
     "id": 1,
-    "name": "Book",
-    "price": 10.99,
-    "imgUrl": "/imgs/book.jpg"
+    "name": "Apple Mac Book",
+    "price": 1999,
+    "imgUrl": "/imgs/apple-macbook.png"
   },
   {
     "id": 2,
-    "name": "Computer",
-    "price": 1199,
-    "imgUrl": "/imgs/computer.jpg"
+    "name": "Keyboard",
+    "price": 29.99,
+    "imgUrl": "/imgs/keyboard.jpg"
   },
   {
     "id": 3,
-    "name": "Banana",
-    "price": 1.05,
-    "imgUrl": "/imgs/banana.jpg"
+    "name": "Mouse Logitech",
+    "price": 15.0,
+    "imgUrl": "/imgs/mouse3.jpg"
   },
   {
     "id": 4,
-    "name": "Car",
-    "price": 14000,
-    "imgUrl": "/imgs/car.jpg"
+    "name": "Ebook InkBOOK",
+    "price": 147.32,
+    "imgUrl": "/imgs/ebook2.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Monitor Samsung",
+    "price": 147.32,
+    "imgUrl": "/imgs/monitor.webp"
   },
   {
     "id": 6,
-    "name": "Car2",
-    "price": 14000,
-    "imgUrl": "/imgs/car.jpg"
+    "name": "Monitor Dell",
+    "price": 250.0,
+    "imgUrl": "/imgs/dell-24-inch-monitor.jpg"
   },
   {
     "id": 7,
-    "name": "Banana2",
-    "price": 1.05,
-    "imgUrl": "/imgs/banana.jpg"
+    "name": "Gaming mouse",
+    "price": 33.0,
+    "imgUrl": "/imgs/mouse2.jpg"
   }
 ]
