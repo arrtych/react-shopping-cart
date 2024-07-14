@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import CustomButton from "./CustomButton";
-import { Box, Typography } from "@mui/material";
+import { Box, BoxProps, SxProps, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
@@ -9,13 +9,13 @@ interface ItemAmountProps {
   increase: () => void;
   decrease: () => void;
   type?: "cart" | "";
+  sx?: BoxProps["sx"];
 }
 
 const ItemAmount: React.FC<ItemAmountProps> = (props) => {
-  const { increase, decrease, amount, type } = { ...props };
+  const { increase, decrease, amount, type, sx } = { ...props };
   return (
-    //
-    <Box display={"flex"} alignItems={"center"} flexDirection={"row"}>
+    <Box display={"flex"} alignItems={"center"} flexDirection={"row"} sx={sx}>
       <CustomButton
         color="primary"
         variant="outlined"

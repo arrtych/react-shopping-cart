@@ -19,12 +19,14 @@ const NoItems: React.FC = () => {
         }}
       >
         <Grid item xs={12}>
+          <AddShoppingCartIcon
+            sx={{ fontSize: "3rem", height: "2em", width: "2em" }}
+          />
+        </Grid>
+        <Grid item xs={12}>
           <Typography sx={{ fontSize: "1.75rem" }}>
             No items in cart at the momemt
           </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <AddShoppingCartIcon sx={{ fontSize: "3rem" }} />
         </Grid>
       </Grid>
     </>

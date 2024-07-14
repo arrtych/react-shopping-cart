@@ -74,6 +74,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
       <ItemAmount
         amount={item.amount}
         type={"cart"}
+        sx={{ justifyContent: "center" }}
         increase={() => increaseItemAmount(item)}
         decrease={() => decreaseItemAmount(item)}
       />
@@ -98,72 +99,80 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
   ];
 
   return (
-    <>
-      {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
-      {/* onClick={toggleDrawer(false)} */}
-      <Drawer open={isOpen} anchor="right" onClose={onClose}>
-        <Box sx={{ width: "50rem", mt: "3rem", ml: "0.75rem", mr: "0.75rem" }}>
-          <Grid container columns={{ xs: 12 }}>
-            <Grid item xs={11} sx={{ pl: 2 }}>
-              <Typography variant="h4" component="h4">
-                Cart
-              </Typography>
-            </Grid>
-            <Grid item xs={1} sx={{ textAlign: "right", pr: 0 }}>
-              <IconButton onClick={toggleDrawer(false)} color="primary">
-                <ClearIcon />
-              </IconButton>
-            </Grid>
-            {/* <Box onClick={toggleDrawer(false)}>dsfdjlkdsjkl</Box> */}
+    <Drawer open={isOpen} anchor="right" onClose={onClose}>
+      <Box
+        sx={
+          items.length > 0
+            ? { width: "50rem", mt: "3rem", ml: "0.5rem", mr: "0.5rem" }
+            : {
+                width: "30rem",
+                mt: "3rem",
+                ml: "0rem",
+                mr: "0rem",
+              }
+        }
+      >
+        <Grid container columns={{ xs: 12 }}>
+          <Grid item xs={11} sx={{ pl: 2 }}>
+            <Typography variant="h4" component="h4">
+              Cart
+            </Typography>
           </Grid>
+          <Grid item xs={1} sx={{ textAlign: "right", pr: 0 }}>
+            <IconButton onClick={toggleDrawer(false)} color="primary">
+              <ClearIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
 
-          {items.length > 0 ? (
-            <>
-              <TableContainer>
-                <Table
-                  sx={{ minWidth: 650, fontSize: "16px" }}
-                  aria-label="simple table"
-                >
-                  <TableHead>
-                    <TableRow>
-                      {tableHeaders.map((header, idx) => (
+        {items.length > 0 ? (
+          <>
+            <TableContainer>
+              <Table
+                sx={{ minWidth: 650, fontSize: "16px" }}
+                aria-label="simple table"
+              >
+                <TableHead>
+                  <TableRow>
+                    {tableHeaders.map((header, idx) => (
+                      <TableCell
+                        key={`${header}-${idx}`}
+                        sx={{ fontWeight: "bold", fontSize: "1rem" }}
+                        align={header == "Amount" ? "center" : "left"}
+                      >
+                        {header}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {items.map((item) => (
+                    <TableRow
+                      key={item.name}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                        "&:hover": {
+                          backgroundColor: "#f5f5f5",
+                          cursor: "pointer",
+                        },
+                      }}
+                    >
+                      {tableItems.map((content, idx) => (
                         <TableCell
-                          key={`${header}-${idx}`}
-                          sx={{ fontWeight: "bold", fontSize: "1rem" }}
-                          align="left"
+                          key={idx}
+                          sx={{
+                            fontSize: "1rem",
+                            textAlign: idx == 3 ? "center" : "",
+                            ...(idx == tableItems.length - 1 && {
+                              pr: 0,
+                            }),
+                          }}
                         >
-                          {header}
+                          {content(item)}
                         </TableCell>
                       ))}
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {items.map((item) => (
-                      <TableRow
-                        key={item.name}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                          "&:hover": {
-                            backgroundColor: "#f5f5f5",
-                            cursor: "pointer",
-                          },
-                        }}
-                      >
-                        {tableItems.map((content, idx) => (
-                          <TableCell
-                            key={idx}
-                            sx={{
-                              fontSize: "1rem",
-                              ...(idx == tableItems.length - 1 && {
-                                pr: 0,
-                              }),
-                            }}
-                          >
-                            {content(item)}
-                          </TableCell>
-                        ))}
 
-                        {/* <TableCell scope="row">
+                      {/* <TableCell scope="row">
                           <img
                             src={item.imgUrl}
                             style={{
@@ -195,20 +204,19 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                             <ClearIcon />
                           </CustomButton>
                         </TableCell> */}
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
 
-              <CartTotalItem />
-            </>
-          ) : (
-            <NoItems />
-          )}
-        </Box>
-      </Drawer>
-    </>
+            <CartTotalItem />
+          </>
+        ) : (
+          <NoItems />
+        )}
+      </Box>
+    </Drawer>
   );
 };
 
