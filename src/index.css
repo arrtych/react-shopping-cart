@@ -17,9 +17,9 @@ code {
 }
 
 .splide__track {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
   border-radius: 50px;
   overflow: visible;
 }
@@ -33,4 +33,48 @@ code {
   transform: scale(0.9);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   will-change: transform, box-shadow;
+}
+
+/* .splideSlide-container::after {
+  background: yellow !important;
+}
+
+.splideSlide-container::before {
+  background: yellow !important;
+} */
+
+/* .splideSlide-container {
+  background: yellow;
+} */
+
+/* .splide__list {
+  transform: translateX(-1662px) !important;
+} */
+
+/* .splide__track {
+  overflow: visible;
+} */
+
+/* .test111::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  z-index: -1; 
+} */
+
+/* .test111 {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+} */
+
+.test111 {
+  margin: 15px;
 }
