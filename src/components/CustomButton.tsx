@@ -1,13 +1,13 @@
-import { Button, ButtonOwnProps } from "@mui/material";
+import { Button, ButtonProps as MuiButtonProps } from "@mui/material";
 import React, { ReactNode } from "react";
 import { JsxElement } from "typescript";
 import { OverridableStringUnion } from "@mui/types";
 import { IconButton } from "@mui/material";
 
 interface ButtonProps {
-  color?: ButtonOwnProps["color"];
-  sx?: ButtonOwnProps["sx"];
-  variant?: ButtonOwnProps["variant"];
+  color?: MuiButtonProps["color"];
+  sx?: MuiButtonProps["sx"];
+  variant?: MuiButtonProps["variant"];
   //   icon?: any; // todo:change
   children?: ReactNode;
   onClick?: () => void;
@@ -16,7 +16,7 @@ interface ButtonProps {
 
 const CustomButton: React.FC<ButtonProps> = (props: ButtonProps) => {
   const { children, color, variant, onClick, sx } = {
-    variant: "contained" as ButtonOwnProps["variant"],
+    variant: "contained" as MuiButtonProps["variant"],
     ...props,
   };
 
