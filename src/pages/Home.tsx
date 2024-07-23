@@ -15,9 +15,8 @@ const Home: React.FC = () => {
       <Grid
         container
         sx={{
-          mt: "64px",
+          // mt: "64px",
           pt: "60px",
-          // background: "red",
 
           // py: "50px",
 
@@ -31,6 +30,7 @@ const Home: React.FC = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            // position: "relative", // doubt
           }}
         >
           <Carousel />
