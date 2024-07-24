@@ -9,7 +9,7 @@ import "@splidejs/react-splide/css/sea-green";
 // or only core styles
 // import "@splidejs/react-splide/css/core";
 
-import storeItems from "../data/store.json";
+import storeItems from "../data/store";
 import CarouselSlide from "./CarouselSlide";
 
 const Carousel: React.FC = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import storeItems from "../data/store.json";
+import storeItems from "../data/store";
 import { Grid } from "@mui/material";
 import StoreItem from "../components/StoreItem";
 import Search from "../components/Search";

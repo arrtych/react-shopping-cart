@@ -43,7 +43,12 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
         <Grid item xs={12}>
           <img
             src={imgUrl}
-            style={{ width: "100%", height: "300px", objectFit: "contain" }}
+            style={{
+              width: "100%",
+              height: "300px",
+              objectFit: "contain",
+              padding: "0 10px",
+            }}
           />
         </Grid>
         <Grid item xs={12}>
