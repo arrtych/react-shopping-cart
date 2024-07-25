@@ -5,3 +5,7 @@ export function capitalizeFirstLetter(value: string) {
 export function round(value: number) {
   return Number(value.toFixed(2));
 }
+
+export const getAmount = (amount?: number) => {
+  return amount ?? 0;
+};

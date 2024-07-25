@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { ProductProps } from "../types/Product";
+import { getAmount } from "../utils/utils";
 
 type ShoppingCartContext = {
   getItemAmount: (id: number) => number;
@@ -33,7 +34,7 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
       } else {
         return prevItems.map((item) => {
           if (item.id == storeItem.id) {
-            return { ...item, amount: item.amount + 1 };
+            return { ...item, amount: getAmount(item.amount) + 1 };
           }
           return item;
         });
@@ -58,7 +59,7 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
       } else {
         return prevItems.map((item) => {
           if (item.id == storeItem.id) {
-            return { ...item, amount: item.amount - 1 };
+            return { ...item, amount: getAmount(item.amount) - 1 };
           }
           return item;
         });
@@ -68,7 +69,7 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
 
   function getTotalPrice() {
     return items.reduce(
-      (total, product) => total + product.price * product.amount,
+      (total, product) => total + product.price * getAmount(product.amount),
       0
     );
   }
@@ -81,11 +82,14 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
    */
   function getItemTotalAmount(id: number): number {
     const product = items.find((p) => p.id === id);
-    return product ? product.price * product.amount : 0;
+    return product ? product.price * getAmount(product.amount) : 0;
   }
 
   function getCartItemsAmount() {
-    return items.reduce((total, product) => total + product.amount, 0);
+    return items.reduce(
+      (total, product) => total + getAmount(product.amount),
+      0
+    );
   }
 
   return (

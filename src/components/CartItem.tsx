@@ -8,6 +8,7 @@ import { Grid, Typography } from "@mui/material";
 import CustomButton from "./CustomButton";
 import ItemAmount from "./ItemAmount";
 import { ProductProps } from "../types/Product";
+import { getAmount } from "../utils/utils";
 
 export interface CartIemProps {
   item: ProductProps;
@@ -39,7 +40,7 @@ const CartItem: React.FC<CartIemProps> = (props: CartIemProps) => {
             </Typography>
 
             <ItemAmount
-              amount={item.amount}
+              amount={getAmount(item.amount)}
               increase={() => increaseItemAmount(item)}
               decrease={() => decreaseItemAmount(item)}
             />

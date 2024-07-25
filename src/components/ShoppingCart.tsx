@@ -23,6 +23,7 @@ import { IconButton } from "@mui/material";
 import { ProductProps } from "../types/Product";
 import NoItems from "./NoItems";
 import ItemAmount from "./ItemAmount";
+import { getAmount } from "../utils/utils";
 
 interface ShoppingCartProps {
   isOpen: boolean;
@@ -72,7 +73,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
     ),
     (item: ProductProps) => (
       <ItemAmount
-        amount={item.amount}
+        amount={getAmount(item.amount)}
         type={"cart"}
         sx={{ justifyContent: "center" }}
         increase={() => increaseItemAmount(item)}

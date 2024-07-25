@@ -1,4 +1,6 @@
-const store = [
+import { ProductProps } from "../types/Product";
+
+const db: ProductProps[] = [
   {
     name: "Apple MacBook",
     price: 1999,
@@ -83,14 +85,6 @@ const store = [
     description:
       "https://www.target.com/p/beats-studio-pro-bluetooth-wireless-headphones-black/-/A-89401490",
   },
-
-  //GUEST_ae460959-e23b-4c7b-9b1f-ee5427a949c9-removebg-preview.png
-  ///
-
-  //ps5-buy-now-product-thumbnail-01-en-18mar22.webp
-  //
-
-  //Samsung-QLED-8K-2.png
 ].map((item, i) => ({ ...item, id: i + 1 }));
 
-export default store;
+export default db;
