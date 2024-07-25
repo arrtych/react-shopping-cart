@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { ProductProps } from "../types/Product";
-import { getAmount } from "../utils/utils";
+import { getAmount, round } from "../utils/utils";
 
 type ShoppingCartContext = {
   getItemAmount: (id: number) => number;
@@ -82,7 +82,8 @@ export const ShoppingCartContextProvider: React.FC<{ children: ReactNode }> = ({
    */
   function getItemTotalAmount(id: number): number {
     const product = items.find((p) => p.id === id);
-    return product ? product.price * getAmount(product.amount) : 0;
+    const result = product ? product.price * getAmount(product.amount) : 0;
+    return round(result);
   }
 
   function getCartItemsAmount() {

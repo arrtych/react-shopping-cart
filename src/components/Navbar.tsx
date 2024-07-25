@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     return isHome(item) ? currentPath === "/" : currentPath.includes(item);
   };
 
-  const changeBodyClass = () => {
+  const changeBodyClass = (): void => {
     let className = location.pathname.substring(1);
     if (!className) {
       className = "home";

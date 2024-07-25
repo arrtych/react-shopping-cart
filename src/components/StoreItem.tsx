@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import CustomButton from "./CustomButton";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
@@ -9,7 +9,7 @@ import { defaultCurrency } from "../utils/constants";
 //todo: useMediaQuery for card swhong on mobile by one card
 // local
 const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
-  const { currency, id, name, price, imgUrl } = {
+  const { currency, id, name, price, imgUrl, description } = {
     currency: defaultCurrency,
     ...props,
   };
@@ -41,15 +41,23 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
         sx={{ mb: 3, borderRadius: "1rem" }}
       >
         <Grid item xs={12}>
-          <img
-            src={imgUrl}
-            style={{
-              width: "100%",
-              height: "300px",
-              objectFit: "contain",
-              padding: "0 10px",
+          <Paper
+            className="product-image"
+            elevation={0}
+            sx={{
+              p: { xs: "0 10px", md: "0 25px" },
             }}
-          />
+          >
+            <img
+              src={imgUrl}
+              style={{
+                width: "100%",
+                height: "300px",
+                objectFit: "contain",
+                // padding: "0 10px",
+              }}
+            />
+          </Paper>
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={2} columns={{ xs: 12 }}>
@@ -63,6 +71,17 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                 {currency}
                 {price}
               </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper
+                className="product-description"
+                elevation={0}
+                sx={{
+                  p: { xs: "0 10px", md: "0 25px" },
+                }}
+              >
+                {description}
+              </Paper>
             </Grid>
           </Grid>
         </Grid>
