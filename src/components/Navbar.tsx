@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { capitalizeFirstLetter } from "../utils/utils";
 import "../styles/Navbar.css";
 import CustomShoppingCartIcon from "./CustomShoppingCartIcon";
+import { ClassNames } from "@emotion/react";
 
 interface NavbarProps {
   isOpen: boolean;
@@ -15,6 +16,11 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const { onClick } = { ...props };
   const location = useLocation();
 
+  useEffect(() => {
+    console.log("Location changed to:", location);
+    changeBodyClass();
+  }, [location]);
+
   const isHome = (item: string) => {
     return item === "home";
   };
@@ -22,6 +28,14 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const isActive = (item: string) => {
     const currentPath = location.pathname;
     return isHome(item) ? currentPath === "/" : currentPath.includes(item);
+  };
+
+  const changeBodyClass = () => {
+    let className = location.pathname.substring(1);
+    if (!className) {
+      className = "home";
+    }
+    document.body.className = className;
   };
 
   const navItemStyle = (isActive: boolean) => ({

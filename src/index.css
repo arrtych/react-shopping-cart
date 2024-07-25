@@ -9,6 +9,13 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  overflow: hidden;
+}
+/* body.home {
+  overflow: hidden;
+} */
+
+body.store {
   overflow: hidden scroll;
 }
 
