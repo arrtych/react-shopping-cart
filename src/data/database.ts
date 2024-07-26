@@ -3,16 +3,18 @@ let defaultDescription =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum mattis risus id viverra. Vivamus pellentesque massa erat, ac finibus sapien pretium in. Sed consequat eros orci, in porta diam interdum non. Morbi lacus magna, dapibus aliquet purus ac, mollis fringilla ex. Donec rutrum mi at nibh venenatis bibendum. Fusce luctus, nibh non bibendum rutrum, quam nulla pulvinar massa, quis dapibus justo tellus id sem. Nullam ut ante sit amet urna congue gravida non ac mauris. In elementum lorem sit amet velit hendrerit elementum. Nullam pulvinar, ligula eget sagittis vestibulum, leo nulla laoreet nisi, ut interdum sapien odio ut ex. Suspendisse non nibh non massa imperdiet scelerisque. Aenean vitae sapien sit amet mi viverra ultrices ac in mi. Maecenas consectetur varius mi at elementum. Suspendisse potenti.";
 const db: ProductProps[] = [
   {
-    name: "Apple MacBook",
-    price: 1999,
+    name: "Apple MacBook Air",
+    price: 999,
     imgUrl: "/imgs/m3-intro-image.png",
-    description: defaultDescription,
+    description:
+      "Discover the Apple MacBook Air, the epitome of sleek design and powerful performance. This ultra-thin, lightweight laptop features a stunning Retina display and is powered by the latest M1 chip, delivering incredible speed and efficiency. With its all-day battery life, backlit Magic Keyboard, and Touch ID, the MacBook Air is perfect for both work and play.",
   },
   {
     name: "Keyboard",
-    price: 29.99,
+    price: 99.99,
     imgUrl: "/imgs/keyboard-kb900-black-gallery-1.avif",
-    description: defaultDescription,
+    description:
+      "Elevate your typing experience with the Logitech MX Keys Advanced Wireless Illuminated Keyboard. Designed for efficiency, stability, and precision, this keyboard features smart illumination that adapts to your environment, a comfortable key layout, and seamless connectivity options. Ideal for both professional and personal use, it ensures effortless productivity and a premium typing experience.",
   },
   {
     name: "PC speakers",

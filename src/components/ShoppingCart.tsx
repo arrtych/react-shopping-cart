@@ -87,15 +87,18 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
       </>
     ),
     (item: ProductProps) => (
-      <>
+      <div className="remove-from-cart">
         <CustomButton
           color="primary"
           variant="outlined"
+          type={"cart"}
+          sx={{ mr: "5px" }}
+          //
           onClick={() => removeFromCart(item)}
         >
           <ClearIcon />
         </CustomButton>
-      </>
+      </div>
     ),
   ];
 
@@ -180,39 +183,6 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
                           {content(item)}
                         </TableCell>
                       ))}
-
-                      {/* <TableCell scope="row">
-                          <img
-                            src={item.imgUrl}
-                            style={{
-                              height: "100px",
-                              width: "125px",
-                              objectFit: "cover",
-                            }}
-                          />
-                        </TableCell>
-
-                        <TableCell align="center" sx={{ fontSize: "1rem" }}>
-                          {item.name}
-                        </TableCell>
-
-                        <TableCell align="center">
-                          {currency} {item.price}
-                        </TableCell>
-                        <TableCell align="center">{item.amount}</TableCell>
-                        <TableCell align="center">
-                          {currency}
-                          {getItemTotalAmount(item.id)}
-                        </TableCell>
-                        <TableCell align="center" sx={{ pr: 0 }}>
-                          <CustomButton
-                            color="primary"
-                            variant="outlined"
-                            onClick={() => removeFromCart(item)}
-                          >
-                            <ClearIcon />
-                          </CustomButton>
-                        </TableCell> */}
                     </TableRow>
                   ))}
                 </TableBody>

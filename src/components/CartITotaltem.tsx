@@ -10,7 +10,8 @@ const CartTotalItem: React.FC = () => {
   let amount = getTotalPrice() || 0;
 
   return (
-    <>
+    <div>
+      <hr style={{ borderTop: 0 }} />
       <Grid container columns={{ xs: 12 }} sx={{ pr: 2, pt: 2 }}>
         <Grid item xs={12} sx={{ textAlign: "right" }}>
           <Typography variant="h4" component="h4">
@@ -19,7 +20,7 @@ const CartTotalItem: React.FC = () => {
           </Typography>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
 

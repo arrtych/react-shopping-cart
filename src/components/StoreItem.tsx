@@ -5,9 +5,11 @@ import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import ItemAmount from "./ItemAmount";
 import { ProductProps } from "../types/Product";
 import { defaultCurrency } from "../utils/constants";
+import DeleteIcon from "@mui/icons-material/DeleteOutline";
 
 //todo: useMediaQuery for card swhong on mobile by one card
 // local
+//todo: find by hash and using router
 const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   const { currency, id, name, price, imgUrl, description } = {
     currency: defaultCurrency,
@@ -117,7 +119,8 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                   color="error"
                   onClick={() => removeFromCart(props)}
                 >
-                  Remove
+                  <DeleteIcon />
+                  {/* or "remove" */}
                 </CustomButton>
               </>
             ) : (
