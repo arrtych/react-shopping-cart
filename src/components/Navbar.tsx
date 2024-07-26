@@ -12,12 +12,11 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
-  const navItems = ["home", "store", "about"];
+  const navItems = ["home", "store"];
   const { onClick } = { ...props };
   const location = useLocation();
 
   useEffect(() => {
-    console.log("Location changed to:", location);
     changeBodyClass();
   }, [location]);
 

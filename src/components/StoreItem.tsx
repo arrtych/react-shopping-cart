@@ -90,34 +90,42 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
           xs={12}
           sx={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "flex-end",
             alignItems: "center",
             mb: 2,
           }}
         >
-          {isInCart ? (
-            <>
-              <ItemAmount
-                amount={amount}
-                increase={() => increaseItemAmount(props)}
-                decrease={() => decreaseItemAmount(props)}
-              />
+          <Paper
+            className="product-footer"
+            elevation={0}
+            sx={{
+              p: { xs: "0 10px", md: "0 25px", display: "flex" },
+            }}
+          >
+            {isInCart ? (
+              <>
+                <ItemAmount
+                  amount={amount}
+                  increase={() => increaseItemAmount(props)}
+                  decrease={() => decreaseItemAmount(props)}
+                />
 
-              <CustomButton
-                sx={{
-                  marginLeft: "1rem",
-                }}
-                color="error"
-                onClick={() => removeFromCart(props)}
-              >
-                Remove
+                <CustomButton
+                  sx={{
+                    marginLeft: "1rem",
+                  }}
+                  color="error"
+                  onClick={() => removeFromCart(props)}
+                >
+                  Remove
+                </CustomButton>
+              </>
+            ) : (
+              <CustomButton color="primary" onClick={() => addToCart(props)}>
+                Add to cart
               </CustomButton>
-            </>
-          ) : (
-            <CustomButton color="primary" onClick={() => addToCart(props)}>
-              Add to cart
-            </CustomButton>
-          )}
+            )}
+          </Paper>
         </Grid>
       </Grid>
     </Box>

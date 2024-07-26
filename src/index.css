@@ -9,19 +9,14 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  overflow: hidden;
 }
-/* body.home {
-  overflow: hidden;
-} */
+
+body.home {
+  overflow-x: hidden;
+}
 
 body.store {
-  overflow: hidden scroll;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  overflow-y: scroll;
 }
 
 .splide__track {
@@ -44,7 +39,6 @@ code {
 }
 
 .store-item:hover {
-  /* transform: scale(1.05); */
   transform: scale(0.9);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   will-change: transform, box-shadow;
@@ -65,3 +59,5 @@ body.store .product-description {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* .shopping-cart-table */

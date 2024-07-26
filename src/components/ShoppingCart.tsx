@@ -64,7 +64,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
         }}
       />
     ),
-    (item: ProductProps) => <>{item.name}</>,
+    (item: ProductProps) => <strong>{item.name}</strong>,
     (item: ProductProps) => (
       <>
         {defaultCurrency}
@@ -104,24 +104,31 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
       <Box
         sx={
           items.length > 0
-            ? { width: "50rem", mt: "3rem", ml: "0.5rem", mr: "0.5rem" }
+            ? { width: "43.75rem", mt: "0.75rem", ml: "0.5rem", mr: "0.5rem" }
             : {
                 width: "30rem",
-                mt: "3rem",
+                mt: "0.75rem",
                 ml: "0rem",
                 mr: "0rem",
               }
         }
       >
-        <Grid container columns={{ xs: 12 }}>
+        <Grid container columns={{ xs: 12 }} sx={{ pr: 0.5 }}>
           <Grid item xs={11} sx={{ pl: 2 }}>
-            <Typography variant="h4" component="h4">
+            <Typography
+              variant="h4"
+              component="h4"
+              className="shopping-cart-title"
+              sx={
+                items.length > 0 ? { color: "#000000de" } : { color: "#8b8b8b" }
+              }
+            >
               Cart
             </Typography>
           </Grid>
           <Grid item xs={1} sx={{ textAlign: "right", pr: 0 }}>
-            <IconButton onClick={toggleDrawer(false)} color="primary">
-              <ClearIcon />
+            <IconButton onClick={toggleDrawer(false)} color="secondary">
+              <ClearIcon sx={{ fill: "#212121" }} />
             </IconButton>
           </Grid>
         </Grid>
@@ -131,7 +138,8 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
             <TableContainer>
               <Table
                 sx={{ minWidth: 650, fontSize: "16px" }}
-                aria-label="simple table"
+                aria-label="shopping-cart-table"
+                className="shopping-cart-table"
               >
                 <TableHead>
                   <TableRow>
@@ -214,7 +222,10 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
             <CartTotalItem />
           </>
         ) : (
-          <NoItems />
+          <>
+            <hr style={{ borderTop: 0 }} />
+            <NoItems />
+          </>
         )}
       </Box>
     </Drawer>

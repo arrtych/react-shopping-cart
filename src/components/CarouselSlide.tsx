@@ -24,8 +24,8 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
             container
             sx={{
               // backgroundColor: "#4a63c0", // blue
-              p: "65px",
-              borderRadius: "50px",
+              p: "85px",
+              // borderRadius: "50px",
               background:
                 "linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%)",
               // boxShadow:
@@ -61,21 +61,53 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                     "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
                 }}
               >
-                <Grid item xs={7}>
-                  <Typography variant="h3" className="product-name">
-                    {product.name}
-                  </Typography>
-                  <Typography variant="h5" className="product-price">
-                    {defaultCurrency} {product.price}
-                  </Typography>
+                <Grid
+                  item
+                  xs={7}
+                  className="splideSlide-left"
+                  sx={{ display: "flex" }}
+                >
+                  <Grid container>
+                    <Grid item xs={12}>
+                      <Typography variant="h2" className="product-name">
+                        {product.name}
+                      </Typography>
+                    </Grid>
 
-                  <Typography className="product-description">
-                    {product.description}
-                  </Typography>
+                    <Grid item xs={12}>
+                      <Typography
+                        variant="h5"
+                        className="product-price"
+                        sx={{ color: "#7b7b7b" }}
+                      >
+                        {defaultCurrency}
+                        {product.price}
+                      </Typography>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <Typography className="product-description">
+                        {product.description}
+                      </Typography>
+                    </Grid>
+
+                    <Grid item xs={12} className="product-buttons">
+                      <CustomButton color="primary" variant="outlined">
+                        Read more
+                      </CustomButton>
+                      <CustomButton
+                        color="primary"
+                        onClick={() => addToCart(product)}
+                      >
+                        Add to cart
+                      </CustomButton>
+                    </Grid>
+                  </Grid>
                 </Grid>
 
                 <Grid
                   item
+                  className="splideSlide-right"
                   xs={5}
                   sx={{ display: "flex", justifyContent: "end", p: "45px" }}
                 >
