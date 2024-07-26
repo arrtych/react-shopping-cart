@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
-import CSSTransitionGroup from "react-transition-group";
+import "animate.css";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -26,7 +26,11 @@ const CustomShoppingCartIcon: React.FC<ShoppingCartIconProps> = ({}) => {
   let amount = getCartItemsAmount();
 
   return (
-    <StyledBadge badgeContent={amount} color={"warning"}>
+    <StyledBadge
+      badgeContent={amount}
+      color={"warning"}
+      className={`${amount > 0 && "animate__animated animate__fadeIn"}`}
+    >
       <ShoppingCartIcon />
     </StyledBadge>
   );
