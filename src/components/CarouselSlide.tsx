@@ -6,6 +6,7 @@ import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 import { defaultCurrency } from "../utils/constants";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export interface CarouselSlideProps {
   product: ProductProps;
@@ -16,6 +17,12 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
 ) => {
   const { product } = { ...props };
   const { addToCart } = useContext(ShoppingCartContext);
+  const navigate = useNavigate();
+
+  const handleProductClick = (productId: number) => {
+    navigate(`/store?product=${productId}`);
+  };
+
   return (
     <SplideSlide>
       <div className="splideSlide-container">
@@ -110,7 +117,12 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                       >
                         Add to cart
                       </CustomButton>
-                      <CustomButton color="primary">Read more</CustomButton>
+                      <CustomButton
+                        onClick={() => handleProductClick(product.id)}
+                        color="primary"
+                      >
+                        Read more
+                      </CustomButton>
                     </Grid>
                   </Grid>
                 </Grid>

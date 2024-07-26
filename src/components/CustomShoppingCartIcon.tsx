@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
+import CSSTransitionGroup from "react-transition-group";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {

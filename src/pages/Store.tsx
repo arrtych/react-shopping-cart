@@ -3,10 +3,12 @@ import storeItems from "../data/database";
 import { Grid } from "@mui/material";
 import StoreItem from "../components/StoreItem";
 import Search from "../components/Search";
+import { useLocation } from "react-router-dom";
 
 const Store: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState(storeItems);
+  const location = useLocation();
 
   useEffect(() => {
     setFilteredItems(
@@ -14,7 +16,17 @@ const Store: React.FC = () => {
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
-  }, [searchTerm]);
+
+    const params = new URLSearchParams(location.search);
+    const productId = params.get("product");
+
+    if (productId) {
+      const productElement = document.getElementById(`product-${productId}`);
+      if (productElement) {
+        productElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [searchTerm, location]);
 
   const handleSearchClose = () => {
     setSearchTerm("");
@@ -49,7 +61,13 @@ const Store: React.FC = () => {
         className="storeitem-container"
       >
         {filteredItems.map((item, index) => (
-          <Grid item key={index} xs={4} sx={{ mb: 3 }}>
+          <Grid
+            item
+            key={item.id}
+            xs={4}
+            sx={{ mb: 3 }}
+            id={`product-${item.id}`}
+          >
             <StoreItem amount={0} {...item} />
           </Grid>
         ))}

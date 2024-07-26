@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
 import { capitalizeFirstLetter } from "../utils/utils";
 import "../styles/Navbar.css";
 import CustomShoppingCartIcon from "./CustomShoppingCartIcon";
-import { ClassNames } from "@emotion/react";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavbarProps {
   isOpen: boolean;

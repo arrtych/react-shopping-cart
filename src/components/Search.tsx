@@ -14,13 +14,20 @@ export interface SearchProps {
 const Search: React.FC<SearchProps> = (props: SearchProps) => {
   const { value, onChange, onClose } = { ...props };
   return (
-    <Paper component="form" sx={{ display: "flex", alignItems: "center" }}>
+    <Paper
+      component="form"
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        height: "50px",
+      }}
+    >
       <IconButton type="button" aria-label="search">
         <SearchIcon />
       </IconButton>
 
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 1, flex: 1, fontSize: "18px" }}
         placeholder="Search products..."
         inputProps={{ "aria-label": "search items" }}
         value={value}
