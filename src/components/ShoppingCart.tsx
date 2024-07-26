@@ -59,8 +59,9 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
         src={item.imgUrl}
         style={{
           height: "100px",
-          width: "100px",
-          objectFit: "cover",
+          width: "100%",
+          objectFit: "contain",
+          maxWidth: "150px",
         }}
       />
     ),

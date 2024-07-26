@@ -124,7 +124,11 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                 </CustomButton>
               </>
             ) : (
-              <CustomButton color="primary" onClick={() => addToCart(props)}>
+              <CustomButton
+                color="primary"
+                variant="outlined"
+                onClick={() => addToCart(props)}
+              >
                 Add to cart
               </CustomButton>
             )}

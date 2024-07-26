@@ -43,13 +43,17 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                 border: "1.5px solid #6d85b06b",
                 borderRadius: "15px",
                 overflow: "hidden",
+                // boxShadow: "rgb(255 174 61)  0px 0px 10px",
+                boxShadow:
+                  "rgb(255 174 61 / 50%) 0px -2px 4px, rgb(255 174 61 / 25%) 0px -4px 8px, rgb(255 174 61 / 10%) 0px -8px 16px, rgb(255 174 61 / 5%) 0px -16px 32px",
               }}
+              className="splideSlide-container-white"
             >
               <Grid
                 container
                 sx={{
                   backgroundColor: "#fff",
-                  p: "40px",
+                  p: "35px",
                   // borderRadius: "30px",
                   // boxShadow:
                   //   "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
@@ -69,7 +73,11 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                 >
                   <Grid container>
                     <Grid item xs={12}>
-                      <Typography variant="h2" className="product-name">
+                      <Typography
+                        variant="h2"
+                        className="product-name"
+                        // sx={{ color: "#ffcf70" }}
+                      >
                         {product.name}
                       </Typography>
                     </Grid>
@@ -85,22 +93,24 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                       </Typography>
                     </Grid>
 
-                    <Grid item xs={12}>
-                      <Typography className="product-description">
+                    <Grid item xs={12} sx={{ marginRight: "30px" }}>
+                      <Typography
+                        className="product-description"
+                        sx={{ marginBottom: "1.25rem" }}
+                      >
                         {product.description}
                       </Typography>
                     </Grid>
 
                     <Grid item xs={12} className="product-buttons">
-                      <CustomButton color="primary" variant="outlined">
-                        Read more
-                      </CustomButton>
                       <CustomButton
                         color="primary"
+                        variant="outlined"
                         onClick={() => addToCart(product)}
                       >
                         Add to cart
                       </CustomButton>
+                      <CustomButton color="primary">Read more</CustomButton>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -109,23 +119,25 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                   item
                   className="splideSlide-right"
                   xs={5}
-                  sx={{ display: "flex", justifyContent: "end", p: "45px" }}
+                  sx={{ display: "flex", justifyContent: "end" }}
+                  // p: "45px"
                 >
-                  <img
-                    src={product.imgUrl}
-                    alt={product.name}
-                    className="product-image-custom"
-                    style={{
-                      width: "100%",
-                      // height: "600px",
-                      objectFit: "contain",
-                      // borderRadius: "50%",
-                      maxWidth: "300px",
-                      aspectRatio: "1",
-                      // boxShadow:
-                      //   "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px",
-                    }}
-                  />
+                  <div className="product-image-custom active">
+                    <img
+                      src={product.imgUrl}
+                      alt={product.name}
+                      style={{
+                        width: "100%",
+                        // height: "600px",
+                        objectFit: "contain",
+                        // borderRadius: "50%",
+                        maxWidth: "300px",
+                        aspectRatio: "1",
+                        // boxShadow:
+                        //   "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px",
+                      }}
+                    />
+                  </div>
                 </Grid>
               </Grid>
             </Grid>

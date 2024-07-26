@@ -31,7 +31,7 @@ const CustomButton: React.FC<ButtonProps> = (props: ButtonProps) => {
           variant={variant}
           sx={sx}
           color={color}
-          size="small"
+          size="large" // check later another buttons
           onClick={onClick}
         >
           {children}

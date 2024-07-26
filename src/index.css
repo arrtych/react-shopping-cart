@@ -34,8 +34,17 @@ body.store {
   /* margin-right: 0 !important; */
 }
 
+.splide__arrow {
+  transition: opacity 200ms ease-in-out;
+  opacity: 0.45 !important;
+}
+
+.splide__arrow:hover {
+  opacity: 1 !important;
+}
+
 .splide__arrow svg {
-  fill: blue !important;
+  fill: #ffffff !important;
 }
 
 .store-item:hover {
@@ -65,4 +74,141 @@ body.store .product-description {
 .remove-from-cart button svg {
   width: 20px !important;
   height: 20px !important;
+}
+
+.splide__pagination__page.is-active {
+  background: #3f4c63 !important;
+}
+
+.splide__pagination__page.is-active:hover {
+  background: #3f4c6361 !important;
+}
+
+.splide__pagination__page:hover {
+  background: #ebeff6 !important;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.splide__pagination li {
+  margin: 2px !important;
+}
+
+.splideSlide-right .product-image-custom {
+}
+
+.product-image-custom {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #eee;
+  display: flex;
+  height: 400px;
+  justify-content: center;
+  position: relative;
+  width: 400px;
+  z-index: 1000;
+  padding: 2em;
+}
+.product-image-custom img {
+  object-fit: cover;
+  height: 400px;
+  width: 400px;
+}
+.product-image-custom::before,
+.product-image-custom::after {
+  /* background-image: linear-gradient(-180deg, #a1deff 0%, #5ea3db 97%); */
+  background-image: linear-gradient(-180deg, #fafbfd 0%, #98acce 97%);
+  content: "";
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s;
+  transition-delay: 0.2s;
+  transform: translateY(0px) translateX(0px);
+  width: 100%;
+  z-index: -1;
+}
+.product-image-custom::after {
+  background-image: linear-gradient(0deg, #ffcf70 0%, #ffae3d 40%);
+}
+.product-image-custom.active {
+  animation-name: hoverPop;
+  animation-duration: 0.4s;
+  animation-fill-direction: forward;
+}
+.product-image-custom.active img {
+  box-shadow: 2px 2px 4px 0px rgba(10, 12, 15, 0.27);
+  box-shadow: 0px 0px 30px 0px rgba(10, 12, 15, 0.27);
+}
+.product-image-custom.active::before {
+  animation: slick-hover-2 3s 0.4s linear infinite;
+  transform: translateY(-20px) translateX(-20px);
+}
+.product-image-custom.active::after {
+  animation: slick-hover 3s 0.4s linear infinite reverse;
+  transform: translateY(20px) translateX(20px);
+}
+
+@keyframes hoverPop {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.05);
+  }
+  66% {
+    transform: scale(0.9);
+  }
+}
+@keyframes slick-hover {
+  0.00% {
+    transform: translateY(20px) translateX(20px);
+  }
+  16.67% {
+    transform: translateY(-13px) translateX(-9px);
+  }
+  33.33% {
+    transform: translateY(4px) translateX(12px);
+  }
+  50.00% {
+    transform: translateY(20px) translateX(-20px);
+  }
+  66.67% {
+    transform: translateY(-3px) translateX(8px);
+  }
+  83.33% {
+    transform: translateY(-15px) translateX(-11px);
+  }
+  100.00% {
+    transform: translateY(20px) translateX(20px);
+  }
+}
+@keyframes slick-hover-2 {
+  0.00% {
+    transform: translateY(-20px) translateX(-20px);
+  }
+  16.67% {
+    transform: translateY(3px) translateX(-5px);
+  }
+  33.33% {
+    transform: translateY(18px) translateX(-10px);
+  }
+  50.00% {
+    transform: translateY(-20px) translateX(20px);
+  }
+  66.67% {
+    transform: translateY(15px) translateX(-4px);
+  }
+  83.33% {
+    transform: translateY(-1px) translateX(15px);
+  }
+  100.00% {
+    transform: translateY(-20px) translateX(-20px);
+  }
+}
+
+.product-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }

@@ -13,7 +13,7 @@ import storeItems from "../data/database";
 import CarouselSlide from "./CarouselSlide";
 
 const Carousel: React.FC = () => {
-  const productIds = [1, 6];
+  const productIds = [1, 5, 6];
 
   const filteredProducts = storeItems.filter((product) =>
     productIds.includes(product.id)
