@@ -26,6 +26,7 @@ const Home: React.FC = () => {
         <Grid
           item
           xs={12}
+          className="carousel-container"
           sx={{
             display: "flex",
             justifyContent: "center",

@@ -61,23 +61,22 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                     "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
                 }}
               >
-                <Grid item xs={4}>
-                  <Typography variant="h2">{product.name}</Typography>
-                  <Typography variant="h4">
+                <Grid item xs={7}>
+                  <Typography variant="h3" className="product-name">
+                    {product.name}
+                  </Typography>
+                  <Typography variant="h5" className="product-price">
                     {defaultCurrency} {product.price}
                   </Typography>
-                  <CustomButton
-                    color="primary"
-                    variant="outlined"
-                    onClick={() => addToCart(product)}
-                  >
-                    Add to cart
-                  </CustomButton>
+
+                  <Typography className="product-description">
+                    {product.description}
+                  </Typography>
                 </Grid>
 
                 <Grid
                   item
-                  xs={8}
+                  xs={5}
                   sx={{ display: "flex", justifyContent: "end", p: "45px" }}
                 >
                   <img
@@ -86,12 +85,12 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                     style={{
                       width: "100%",
                       // height: "600px",
-                      objectFit: "cover",
-                      borderRadius: "50%",
+                      objectFit: "contain",
+                      // borderRadius: "50%",
                       maxWidth: "300px",
                       aspectRatio: "1",
-                      boxShadow:
-                        "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px",
+                      // boxShadow:
+                      //   "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px",
                     }}
                   />
                 </Grid>

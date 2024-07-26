@@ -37,7 +37,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
         container
         spacing={4}
         columns={{ xs: 12 }}
-        className="storeItem"
+        className="storeitem"
         sx={{ mb: 3, borderRadius: "1rem" }}
       >
         <Grid item xs={12}>
@@ -54,7 +54,6 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                 width: "100%",
                 height: "300px",
                 objectFit: "contain",
-                // padding: "0 10px",
               }}
             />
           </Paper>

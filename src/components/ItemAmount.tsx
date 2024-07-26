@@ -11,6 +11,7 @@ interface ItemAmountProps {
   type?: "cart" | "";
   sx?: BoxProps["sx"];
 }
+//todo: add button in two rows on mobile
 
 const ItemAmount: React.FC<ItemAmountProps> = (props) => {
   const { increase, decrease, amount, type, sx } = { ...props };

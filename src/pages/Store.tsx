@@ -46,7 +46,7 @@ const Store: React.FC = () => {
         spacing={2}
         columns={{ xs: 12 }}
         sx={{ pl: 4, pr: 4 }}
-        className="storeItemContainer"
+        className="storeitem-container"
       >
         {filteredItems.map((item, index) => (
           <Grid item key={index} xs={4} sx={{ mb: 3 }}>
