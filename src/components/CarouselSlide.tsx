@@ -16,7 +16,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
   props: CarouselSlideProps
 ) => {
   const { product } = { ...props };
-  const { addToCart } = useContext(ShoppingCartContext);
+  const { increaseItemAmount } = useContext(ShoppingCartContext);
   const navigate = useNavigate();
 
   const handleProductClick = (productId: number) => {
@@ -26,7 +26,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
   return (
     <SplideSlide>
       <div className="splideSlide-container">
-        <div style={{ margin: "40px 10vw" }}>
+        <div style={{ margin: "0px" }}>
           <Grid
             container
             sx={{
@@ -113,7 +113,11 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                       <CustomButton
                         color="primary"
                         variant="outlined"
-                        onClick={() => addToCart(product)}
+                        onClick={() => {
+                          // debugger;
+                          // addToCart(product);
+                          increaseItemAmount(product);
+                        }}
                       >
                         Add to cart
                       </CustomButton>
@@ -134,7 +138,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                   sx={{ display: "flex", justifyContent: "end" }}
                   // p: "45px"
                 >
-                  <div className="product-image-custom active">
+                  <div className="product-image-custom">
                     <img
                       src={product.imgUrl}
                       alt={product.name}

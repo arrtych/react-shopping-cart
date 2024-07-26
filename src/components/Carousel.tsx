@@ -26,8 +26,9 @@ const Carousel: React.FC = () => {
         options={{
           type: "loop",
           width: "75%",
-          gap: "3em",
-          // easingFunc: ( t: number ) => number = t => 1 - Math.pow( 1 - t, 4 )
+          fixedWidth: "100%",
+          gap: "16vw",
+          // padding: { left: "5rem", right: "5rem" },
           easingFunc: (t: number) => {
             return 9 - Math.pow(1 - t, 4);
           },
@@ -37,7 +38,7 @@ const Carousel: React.FC = () => {
         {filteredProducts.map((product) => (
           <CarouselSlide
             key={`product-${product.id}`}
-            product={{ ...product, amount: 1 }}
+            product={{ ...product }}
           />
         ))}
       </Splide>

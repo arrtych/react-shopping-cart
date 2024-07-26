@@ -1,6 +1,8 @@
 import { ProductProps } from "../types/Product";
+
 let defaultDescription =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum mattis risus id viverra. Vivamus pellentesque massa erat, ac finibus sapien pretium in. Sed consequat eros orci, in porta diam interdum non. Morbi lacus magna, dapibus aliquet purus ac, mollis fringilla ex. Donec rutrum mi at nibh venenatis bibendum. Fusce luctus, nibh non bibendum rutrum, quam nulla pulvinar massa, quis dapibus justo tellus id sem. Nullam ut ante sit amet urna congue gravida non ac mauris. In elementum lorem sit amet velit hendrerit elementum. Nullam pulvinar, ligula eget sagittis vestibulum, leo nulla laoreet nisi, ut interdum sapien odio ut ex. Suspendisse non nibh non massa imperdiet scelerisque. Aenean vitae sapien sit amet mi viverra ultrices ac in mi. Maecenas consectetur varius mi at elementum. Suspendisse potenti.";
+
 const db: ProductProps[] = [
   {
     name: "Apple MacBook Air",

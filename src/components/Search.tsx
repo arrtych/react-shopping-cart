@@ -10,7 +10,6 @@ export interface SearchProps {
   value: string;
 }
 
-//todo: change input to bigger
 const Search: React.FC<SearchProps> = (props: SearchProps) => {
   const { value, onChange, onClose } = { ...props };
   return (

@@ -50,10 +50,10 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
     >
       <Grid
         container
-        spacing={4}
+        // spacing={4}
         columns={{ xs: 12 }}
-        className="storeitem"
-        sx={{ mb: 3, borderRadius: "1rem" }}
+        className="store-item"
+        sx={{ borderRadius: "1rem" }}
       >
         <Grid item xs={12}>
           <Paper
@@ -63,18 +63,11 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
               p: { xs: "0 10px", md: "0 25px" },
             }}
           >
-            <img
-              src={imgUrl}
-              style={{
-                width: "100%",
-                height: "300px",
-                objectFit: "contain",
-              }}
-            />
+            <img src={imgUrl} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <Grid container spacing={2} columns={{ xs: 12 }}>
+          <Grid container columns={{ xs: 12 }}>
             <Grid item xs={6}>
               <Typography variant="h5" gutterBottom sx={{ ml: 3 }}>
                 {highlightText(name, searchTerm)}

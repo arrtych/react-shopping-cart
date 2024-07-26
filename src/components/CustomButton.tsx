@@ -8,7 +8,6 @@ interface ButtonProps {
   color?: MuiButtonProps["color"];
   sx?: MuiButtonProps["sx"];
   variant?: MuiButtonProps["variant"];
-  //   icon?: any; // todo:change
   children?: ReactNode;
   onClick?: () => void;
   type?: "cart" | "";
