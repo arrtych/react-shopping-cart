@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import storeItems from "../data/database";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import StoreItem from "../components/StoreItem";
 import Search from "../components/Search";
 import { useLocation } from "react-router-dom";
+import SearchOffIcon from "@mui/icons-material/SearchOff";
 
 const Store: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,8 +32,55 @@ const Store: React.FC = () => {
     }
   }, [searchTerm, location]);
 
-  const handleSearchClose = () => {
+  const handleSearchClose = (): void => {
     setSearchTerm("");
+  };
+
+  const NoSearchResult: React.FC = (): JSX.Element => {
+    return (
+      <Grid
+        container
+        className="no-search"
+        sx={{
+          color: "#114d898c",
+          display: "flex",
+          width: "auto",
+          margin: "0",
+          alignItems: "flex-start",
+          gap: "10px",
+          flexDirection: "row",
+        }}
+      >
+        <Grid
+          item
+          xs={12}
+          sx={{
+            flex: "0 1 auto",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            justifyContent: "center",
+          }}
+        >
+          <SearchOffIcon sx={{ width: "7em", height: "8em" }} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            flex: "0 1 auto",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="h2" className="no-search-text">
+            No items found
+          </Typography>
+        </Grid>
+      </Grid>
+    );
   };
 
   return (
@@ -53,6 +101,8 @@ const Store: React.FC = () => {
           />
         </Grid>
       </Grid>
+
+      {filteredItems && filteredItems.length === 0 && <NoSearchResult />}
 
       <Grid
         container

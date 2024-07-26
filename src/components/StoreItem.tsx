@@ -86,6 +86,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                 {price}
               </Typography>
             </Grid>
+
             <Grid item xs={12}>
               <Paper
                 className="product-description"
@@ -94,9 +95,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                   p: { xs: "0 10px", md: "0 25px" },
                 }}
               >
-                {description
-                  ? highlightText(description, searchTerm)
-                  : "No description available"}
+                {description && highlightText(description, searchTerm)}
               </Paper>
             </Grid>
           </Grid>
