@@ -12,8 +12,11 @@ const Store: React.FC = () => {
 
   useEffect(() => {
     setFilteredItems(
-      storeItems.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      storeItems.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (item.description &&
+            item.description.toLowerCase().includes(searchTerm.toLowerCase()))
       )
     );
 
@@ -35,8 +38,6 @@ const Store: React.FC = () => {
   return (
     <>
       <h2>Store Page</h2>
-      {/* <p>Welcome to the Store Page</p> */}
-
       <Grid
         container
         sx={{ pl: 4, pt: 4, pb: 8, pr: 4 }}
@@ -68,7 +69,7 @@ const Store: React.FC = () => {
             sx={{ mb: 3 }}
             id={`product-${item.id}`}
           >
-            <StoreItem amount={0} {...item} />
+            <StoreItem amount={0} {...item} searchTerm={searchTerm} />
           </Grid>
         ))}
       </Grid>

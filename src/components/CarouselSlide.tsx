@@ -26,7 +26,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
   return (
     <SplideSlide>
       <div className="splideSlide-container">
-        <div style={{ margin: "75px 10vw" }}>
+        <div style={{ margin: "40px 10vw" }}>
           <Grid
             container
             sx={{

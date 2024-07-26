@@ -6,4 +6,5 @@ export interface ProductProps {
   amount?: number;
   currency?: string;
   description?: string;
+  searchTerm: string; //todo: removeafter
 }

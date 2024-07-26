@@ -83,6 +83,6 @@ const db: ProductProps[] = [
     description:
       "Experience music like never before with the JBL Pulse 4, featuring powerful 360-degree sound and a stunning LED light show. This waterproof (IPX7) speaker is perfect for any environment, from poolside parties to cozy indoor gatherings. Enjoy up to 12 hours of continuous playtime with wireless Bluetooth streaming. Elevate your audio and visual experience with the JBL Pulse 4.",
   },
-].map((item, i) => ({ ...item, id: i + 1 }));
+].map((item, i) => ({ ...item, id: i + 1, searchTerm: "" }));
 
 export default db;

@@ -8,10 +8,22 @@ import { defaultCurrency } from "../utils/constants";
 import DeleteIcon from "@mui/icons-material/DeleteOutline";
 
 //todo: useMediaQuery for card swhong on mobile by one card
-// local
-//todo: find by hash and using router
+
+const highlightText = (text: string, searchTerm: string) => {
+  if (!searchTerm.trim()) return text;
+
+  const parts = text.split(new RegExp(`(${searchTerm})`, "gi"));
+  return parts.map((part, index) =>
+    part.toLowerCase() === searchTerm.toLowerCase() ? (
+      <mark key={index}>{part}</mark>
+    ) : (
+      part
+    )
+  );
+};
+
 const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
-  const { currency, id, name, price, imgUrl, description } = {
+  const { currency, id, name, price, imgUrl, description, searchTerm } = {
     currency: defaultCurrency,
     ...props,
   };
@@ -25,6 +37,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
 
   let amount = getItemAmount(id);
   const isInCart = !!amount;
+
   return (
     <Box
       sx={{
@@ -64,7 +77,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
           <Grid container spacing={2} columns={{ xs: 12 }}>
             <Grid item xs={6}>
               <Typography variant="h5" gutterBottom sx={{ ml: 3 }}>
-                {name}
+                {highlightText(name, searchTerm)}
               </Typography>
             </Grid>
             <Grid item xs={6} sx={{ textAlign: "right" }}>
@@ -81,7 +94,9 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                   p: { xs: "0 10px", md: "0 25px" },
                 }}
               >
-                {description}
+                {description
+                  ? highlightText(description, searchTerm)
+                  : "No description available"}
               </Paper>
             </Grid>
           </Grid>
