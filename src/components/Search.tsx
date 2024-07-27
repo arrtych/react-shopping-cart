@@ -15,10 +15,11 @@ const Search: React.FC<SearchProps> = (props: SearchProps) => {
   return (
     <Paper
       component="form"
+      className="product-search-item"
       sx={{
         display: "flex",
         alignItems: "center",
-        height: "50px",
+        height: "60px",
       }}
     >
       <IconButton type="button" aria-label="search">

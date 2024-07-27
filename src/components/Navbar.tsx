@@ -4,6 +4,8 @@ import { capitalizeFirstLetter } from "../utils/utils";
 import "../styles/Navbar.css";
 import CustomShoppingCartIcon from "./CustomShoppingCartIcon";
 import { Link, useLocation } from "react-router-dom";
+import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
+import AddHomeOutlinedIcon from "@mui/icons-material/AddHomeOutlined";
 
 interface NavbarProps {
   isOpen: boolean;
@@ -37,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   };
 
   const navItemStyle = (isActive: boolean) => ({
-    color: isActive ? "black" : "gray",
+    color: isActive ? "#1976d2" : "gray",
     fontWeight: isActive ? "bold" : "normal",
     marginRight: "20px",
   });
@@ -62,7 +64,14 @@ const Navbar: React.FC<NavbarProps> = (props) => {
               style={navItemStyle(isActive(item))}
               className="nav-item"
             >
-              {capitalizeFirstLetter(item)}
+              <div className="nav-icon-item">
+                {isHome(item) ? (
+                  <AddHomeOutlinedIcon />
+                ) : (
+                  <PaymentOutlinedIcon />
+                )}
+                <p>{capitalizeFirstLetter(item)}</p>
+              </div>
             </Typography>
           ))}
         </Box>

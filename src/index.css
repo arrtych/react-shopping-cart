@@ -1,5 +1,7 @@
 :root {
   --desktop-breakpoint: 1440px;
+  --notfound-animation: "animate__animated animate__zoomIn";
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +70,7 @@ body.store {
   will-change: transform, box-shadow;
 } */
 
-.store-item:hover {
+.product-item:hover {
   transform: scale(1.03);
   box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12),
     0 8px 32px -8px hsla(0, 0%, 0%, 0.14),
@@ -246,7 +248,18 @@ body.store .product-description {
   width: 100%;
   height: auto;
   object-fit: contain;
-  max-width: 355px;
   max-width: 400px;
-  height: 420px;
+  aspect-ratio: 1 / 1;
+}
+
+.product-image-element {
+  padding: 25px;
+}
+
+.nav-icon-item {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  align-items: center;
+  gap: 3px;
 }

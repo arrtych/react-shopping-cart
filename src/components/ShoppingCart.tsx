@@ -21,9 +21,9 @@ import { defaultCurrency } from "../utils/constants";
 import ClearIcon from "@mui/icons-material/Clear";
 import { IconButton } from "@mui/material";
 import { ProductProps } from "../types/Product";
-import NoItems from "./NoItems";
 import ItemAmount from "./ItemAmount";
 import { getAmount } from "../utils/utils";
+import NoItemsInCart from "./NoItemsInCart";
 
 interface ShoppingCartProps {
   isOpen: boolean;
@@ -195,7 +195,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
         ) : (
           <>
             <hr style={{ borderTop: 0 }} />
-            <NoItems />
+            <NoItemsInCart />
           </>
         )}
       </Box>

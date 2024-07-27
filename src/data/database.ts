@@ -66,7 +66,7 @@ const db: ProductProps[] = [
   {
     name: "Vacuum Cleaner",
     price: 299.99,
-    imgUrl: "/imgs/10-720x720.png",
+    imgUrl: "/imgs/cleaner.png",
     description:
       "Meet the Xiaomi Mi Robot Vacuum, your intelligent home cleaning assistant. This sleek, white robotic vacuum features advanced mapping and navigation technology for efficient and thorough cleaning. Equipped with powerful suction and multiple cleaning modes, it tackles dust, dirt, and debris on various surfaces with ease. The Mi Robot Vacuum is also Wi-Fi enabled, allowing you to control it remotely via a smartphone app.",
   },
@@ -74,7 +74,7 @@ const db: ProductProps[] = [
   {
     name: "TV",
     price: 157.45,
-    imgUrl: "/imgs/N5000-Series-5-black1.jpg",
+    imgUrl: "/imgs/tv.png",
     description: defaultDescription,
   },
 

@@ -1,8 +1,9 @@
 import React from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Grid, Typography } from "@mui/material";
+import "animate.css";
 
-const NoItems: React.FC = () => {
+const NoItemsInCart: React.FC = () => {
   return (
     <>
       <Grid
@@ -21,10 +22,14 @@ const NoItems: React.FC = () => {
         <Grid item xs={12}>
           <AddShoppingCartIcon
             sx={{ fontSize: "3rem", height: "2em", width: "2em" }}
+            className="no-search-text animate__animated animate__zoomIn"
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography sx={{ fontSize: "1.75rem" }}>
+          <Typography
+            sx={{ fontSize: "1.75rem" }}
+            className="no-search-text animate__animated animate__zoomIn"
+          >
             No items in cart at the momemt
           </Typography>
         </Grid>
@@ -33,4 +38,4 @@ const NoItems: React.FC = () => {
   );
 };
 
-export default NoItems;
+export default NoItemsInCart;

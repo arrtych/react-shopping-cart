@@ -63,7 +63,10 @@ const Store: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          <SearchOffIcon sx={{ width: "7em", height: "8em" }} />
+          <SearchOffIcon
+            sx={{ width: "7em", height: "8em" }}
+            className="animate__animated animate__zoomIn"
+          />
         </Grid>
         <Grid
           item
@@ -76,7 +79,10 @@ const Store: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h2" className="no-search-text">
+          <Typography
+            variant="h2"
+            className="no-search-text animate__animated animate__zoomIn"
+          >
             No items found
           </Typography>
         </Grid>
@@ -93,7 +99,7 @@ const Store: React.FC = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid item xs={4} sx={{ margin: "1.5em 0px" }}>
+        <Grid item xs={6} sx={{ margin: "1.5em 0px" }}>
           <Search
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
