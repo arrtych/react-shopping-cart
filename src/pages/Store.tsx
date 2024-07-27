@@ -3,10 +3,10 @@ import storeItems from "../data/database";
 import { Grid, Typography } from "@mui/material";
 import StoreItem from "../components/StoreItem";
 import Search from "../components/Search";
-// import { useLocation } from "react-router-dom";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
-import { Link, useLocation } from "react-router-dom";
-import { Unstable_Grid as GridNew } from "@mui/system";
+import { useLocation } from "react-router-dom";
+// import { Unstable_Grid as GridNew } from "@mui/system";
+
 const Store: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState(storeItems);
@@ -86,33 +86,48 @@ const Store: React.FC = () => {
 
   return (
     <>
+      <Grid
+        container
+        sx={{ pl: 4, pt: 4, pb: 8, pr: 4, marginTop: "64px", padding: "0px" }}
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid item xs={4} sx={{ margin: "1.5em 0px" }}>
+          <Search
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onClose={handleSearchClose}
+          />
+        </Grid>
+      </Grid>
       {filteredItems && filteredItems.length === 0 && <NoSearchResult />}
 
       <Grid
         container
         // disableEqualOverflow
-        // component={"ul"}
+        component={"ul"}
         columns={{ xs: 12 }}
         sx={{
-          marginTop: "94px",
-          gap: "25px",
+          gap: "2em",
           p: 0,
           listStyle: "none",
+          maxWidth: "var(--desktop-breakpoint)",
         }}
         className="storeitem-container"
       >
         {filteredItems.map((item, index) => (
-          <GridNew
-            // item
+          <Grid
+            item
             key={item.id}
             // disableEqualOverflow
-            component={"div"}
+            component={"li"}
             xs={4}
-            sx={{ maxWidth: "calc((100vw / 3) - 23px)" }}
+            sx={{ maxWidth: "calc((var(--desktop-breakpoint) / 3) - 23px)" }}
             id={`product-${item.id}`}
           >
             <StoreItem amount={0} {...item} searchTerm={searchTerm} />
-          </GridNew>
+          </Grid>
         ))}
       </Grid>
     </>

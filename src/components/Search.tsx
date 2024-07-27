@@ -33,7 +33,7 @@ const Search: React.FC<SearchProps> = (props: SearchProps) => {
         onChange={onChange}
       />
 
-      {value != "" && (
+      {value !== "" && (
         <IconButton aria-label="clear search" onClick={onClose}>
           <CloseIcon />
         </IconButton>

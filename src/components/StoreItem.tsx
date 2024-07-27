@@ -48,32 +48,39 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
       }}
       className="store-item"
     >
-      <Grid
-        container
-        // spacing={4}
-        columns={{ xs: 12 }}
-        className="store-item"
-        sx={{ borderRadius: "1rem" }}
-      >
+      <Grid container columns={{ xs: 12 }} sx={{ borderRadius: "1rem" }}>
         <Grid item xs={12}>
+          {/* Product Image */}
           <Paper
             className="product-image"
             elevation={0}
             sx={{
               p: { xs: "0 10px", md: "0 25px" },
+              marginTop: "25px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <img src={imgUrl} />
           </Paper>
         </Grid>
-        <Grid item xs={12}>
+
+        {/* Product Name, Description, Price... */}
+        <Grid item xs={12} sx={{ marginTop: "1.2em", marginBottom: "1.2em" }}>
           <Grid container columns={{ xs: 12 }}>
-            <Grid item xs={6}>
+            <Grid item xs={6} sx={{ marginBottom: "1em" }}>
               <Typography variant="h5" gutterBottom sx={{ ml: 3 }}>
                 {highlightText(name, searchTerm)}
               </Typography>
             </Grid>
-            <Grid item xs={6} sx={{ textAlign: "right" }}>
+            <Grid
+              item
+              xs={6}
+              sx={{
+                textAlign: "right",
+              }}
+            >
               <Typography variant="h5" sx={{ mr: 3, color: "#7b7b7b" }}>
                 {currency}
                 {price}
@@ -94,6 +101,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
           </Grid>
         </Grid>
 
+        {/* Product actions */}
         <Grid
           item
           xs={12}
@@ -108,7 +116,8 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
             className="product-footer"
             elevation={0}
             sx={{
-              p: { xs: "0 10px", md: "0 25px", display: "flex" },
+              p: { xs: "0 10px", display: "flex" },
+              mb: "9px",
             }}
           >
             {isInCart ? (
@@ -122,6 +131,8 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                 <CustomButton
                   sx={{
                     marginLeft: "1rem",
+                    marginRight: "15px",
+                    // margin: "30px 0px",
                   }}
                   color="error"
                   onClick={() => removeFromCart(props)}
@@ -135,6 +146,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                 color="primary"
                 variant="outlined"
                 onClick={() => addToCart(props)}
+                sx={{ marginRight: "15px" }}
               >
                 Add to cart
               </CustomButton>
