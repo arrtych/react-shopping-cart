@@ -8,16 +8,10 @@ import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
 import AddHomeOutlinedIcon from "@mui/icons-material/AddHomeOutlined";
 import { useDrawer } from "../context/DrawerContext";
 
-interface NavbarProps {
-  isOpen?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
-
-const Navbar: React.FC<NavbarProps> = (props) => {
+const Navbar: React.FC = () => {
   const navItems = ["home", "store"];
-  const { onClick } = { ...props };
   const location = useLocation();
-  const { openDrawer, changeDrawer } = useDrawer();
+  const { changeDrawer } = useDrawer();
 
   useEffect(() => {
     changeBodyClass();

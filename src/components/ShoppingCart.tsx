@@ -15,7 +15,6 @@ import React, { useContext, useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import CartTotalItem from "./CartITotaltem";
-import Paper from "@mui/material/Paper";
 import CustomButton from "./CustomButton";
 import { defaultCurrency } from "../utils/constants";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -26,21 +25,8 @@ import { getAmount } from "../utils/utils";
 import NoItemsInCart from "./NoItemsInCart";
 import { useDrawer } from "../context/DrawerContext";
 
-interface ShoppingCartProps {
-  isOpen?: boolean;
-  onClose?: () => void;
-}
-
-type Anchor = "top" | "left" | "bottom" | "right";
-
-const ShoppingCart: React.FC<ShoppingCartProps> = (
-  props: ShoppingCartProps
-) => {
-  let { isOpen, onClose } = { ...props };
-
-  const [open, setOpen] = useState(false);
-
-  const { openDrawer, closeDrawer, changeDrawer } = useDrawer();
+const ShoppingCart: React.FC = () => {
+  const { openDrawer, closeDrawer } = useDrawer();
 
   const {
     removeFromCart,
