@@ -22,7 +22,8 @@ const db: ProductProps[] = [
     name: "PC speakers",
     price: 109.99,
     imgUrl: "/imgs/G2000_Speaker_Product_Picture_red_1.webp",
-    description: defaultDescription,
+    description:
+      "Unleash immersive sound with the Hecate G2000 Gaming Speakers. Designed for gamers and audiophiles alike, these striking red speakers deliver powerful audio with deep bass and crystal-clear highs. Their modern, edgy design fits perfectly in any gaming setup, while the convenient control panel allows easy adjustments to volume and sound modes.",
   },
 
   {

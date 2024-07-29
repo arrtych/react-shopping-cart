@@ -6,6 +6,14 @@ import Search from "../components/Search";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
 import { useLocation } from "react-router-dom";
 // import { Unstable_Grid as GridNew } from "@mui/system";
+import { useMemo } from "react";
+
+const MemoizedImage = React.memo(({ src, alt }: any) => (
+  <img src={src} alt={alt} />
+));
+{
+  /* <MemoizedImage src="path/to/image.jpg" alt="Description" /> */
+}
 
 const Store: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,7 +36,10 @@ const Store: React.FC = () => {
     if (productId) {
       const productElement = document.getElementById(`product-${productId}`);
       if (productElement) {
-        productElement.scrollIntoView({ behavior: "smooth" });
+        // window.scrollBy(0, -10); // Adjust scrolling with a negative value here
+
+        // productElement.scrollIntoView({ block: "center", behavior: "smooth" });
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }
     }
   }, [searchTerm, location]);
@@ -48,8 +59,12 @@ const Store: React.FC = () => {
           width: "auto",
           margin: "0",
           alignItems: "flex-start",
-          gap: "10px",
+          gap: "20px",
           flexDirection: "row",
+          position: "absolute",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          top: "calc((100vh + 64px) / 2)",
         }}
       >
         <Grid
@@ -83,7 +98,7 @@ const Store: React.FC = () => {
             variant="h2"
             className="no-search-text animate__animated animate__zoomIn"
           >
-            No items found
+            No matches found for "{searchTerm}"
           </Typography>
         </Grid>
       </Grid>
@@ -99,7 +114,13 @@ const Store: React.FC = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid item xs={6} sx={{ margin: "1.5em 0px" }}>
+        <Grid
+          id="search-container"
+          item
+          xs={12}
+          md={6}
+          sx={{ margin: "1.5em 0px" }}
+        >
           <Search
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -107,35 +128,37 @@ const Store: React.FC = () => {
           />
         </Grid>
       </Grid>
-      {filteredItems && filteredItems.length === 0 && <NoSearchResult />}
 
-      <Grid
-        container
-        // disableEqualOverflow
-        component={"ul"}
-        columns={{ xs: 12 }}
-        sx={{
-          gap: "2em",
-          p: 0,
-          listStyle: "none",
-          maxWidth: "var(--desktop-breakpoint)",
-        }}
-        className="storeitem-container"
-      >
-        {filteredItems.map((item, index) => (
-          <Grid
-            item
-            key={item.id}
-            // disableEqualOverflow
-            component={"li"}
-            xs={4}
-            sx={{ maxWidth: "calc((var(--desktop-breakpoint) / 3) - 23px)" }}
-            id={`product-${item.id}`}
-          >
-            <StoreItem amount={0} {...item} searchTerm={searchTerm} />
-          </Grid>
-        ))}
-      </Grid>
+      {filteredItems?.length !== 0 ? (
+        <Grid
+          container
+          component={"ul"}
+          columns={{ xs: 12 }}
+          sx={{
+            gap: "2em",
+            p: 0,
+            listStyle: "none",
+            maxWidth: "var(--desktop-breakpoint)",
+            margin: "0 auto",
+          }}
+          className="storeitem-container"
+        >
+          {filteredItems.map((item, index) => (
+            <Grid
+              item
+              key={item.id}
+              component={"li"}
+              xs={4}
+              sx={{ maxWidth: "calc((var(--desktop-breakpoint) / 3) - 23px)" }}
+              id={`product-${item.id}`}
+            >
+              <StoreItem amount={0} {...item} searchTerm={searchTerm} />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <NoSearchResult />
+      )}
     </>
   );
 };

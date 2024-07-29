@@ -48,6 +48,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     <AppBar position="fixed" style={{ backgroundColor: "white" }}>
       <Toolbar>
         <Box
+          component={"nav"}
           sx={{
             display: "flex",
             justifyContent: "flex-start",

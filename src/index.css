@@ -1,10 +1,15 @@
 :root {
   --desktop-breakpoint: 1440px;
-  --notfound-animation: "animate__animated animate__zoomIn";
+  /* --notfound-animation: "animate__animated animate__zoomIn"; */
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+body.store #root {
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
+  /* height: calc(100vh - 64px); */
+  /* gap: 5em; */
 }
 
 body {
@@ -262,4 +267,38 @@ body.store .product-description {
   height: auto;
   align-items: center;
   gap: 3px;
+  line-height: 24px;
 }
+
+/* между цветами #ffcf70 и #ffae3d */
+
+/* .blink {
+  background-color: red !important;
+  transition: background-color 1.5s ease-in-out;
+}
+
+.blink:hover {
+  background-color: green !important;
+} */
+
+/* .product-image {
+  width: 100%;
+  max-width: 400px;
+  position: relative; 
+  overflow: hidden;
+}
+
+.product-image::before {
+  content: "";
+  display: block;
+  padding-top: 100%; 
+}
+
+.product-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+} */

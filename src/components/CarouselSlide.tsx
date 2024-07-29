@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 import { defaultCurrency } from "../utils/constants";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { scrollTo } from "../utils/utils";
 
 export interface CarouselSlideProps {
   product: ProductProps;
@@ -19,8 +20,11 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
   const { increaseItemAmount } = useContext(ShoppingCartContext);
   const navigate = useNavigate();
 
+  // let x = await scrollTo(product.id);
+
   const handleProductClick = (productId: number) => {
     navigate(`/store?product=${productId}`);
+    // scrollTo(productId.toString());
   };
 
   return (
