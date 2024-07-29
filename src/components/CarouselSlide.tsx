@@ -8,6 +8,7 @@ import { Typography } from "@mui/material";
 import { defaultCurrency } from "../utils/constants";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { scrollTo } from "../utils/utils";
+import { useDrawer } from "../context/DrawerContext";
 
 export interface CarouselSlideProps {
   product: ProductProps;
@@ -19,8 +20,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
   const { product } = { ...props };
   const { increaseItemAmount } = useContext(ShoppingCartContext);
   const navigate = useNavigate();
-
-  // let x = await scrollTo(product.id);
+  const { changeDrawer } = useDrawer();
 
   const handleProductClick = (productId: number) => {
     navigate(`/store?product=${productId}`);
@@ -118,9 +118,8 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                         color="primary"
                         variant="outlined"
                         onClick={() => {
-                          // debugger;
-                          // addToCart(product);
                           increaseItemAmount(product);
+                          changeDrawer();
                         }}
                       >
                         Add to cart

@@ -12,6 +12,7 @@ import { useMemo } from "react";
 import { JsxElement } from "typescript";
 import { Suspense } from "react";
 import storeItems from "../data/database";
+import { useDrawer } from "../context/DrawerContext";
 
 // const MemoizedImage = React.memo(({ src, alt }: any) => (
 //   <img src={src} alt={alt} />
@@ -75,7 +76,7 @@ function getObjectById(
 //save to database
 const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   const [imageData, setImageData] = useState<ImageProps[]>([]);
-
+  const { changeDrawer } = useDrawer();
   useEffect(() => {
     const fetchImageDimensions = async () => {
       const promises = db.map(
@@ -267,7 +268,10 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
               <CustomButton
                 color="primary"
                 variant="outlined"
-                onClick={() => addToCart(props)}
+                onClick={() => {
+                  addToCart(props);
+                  changeDrawer();
+                }}
                 sx={{ marginRight: "15px" }}
               >
                 Add to cart

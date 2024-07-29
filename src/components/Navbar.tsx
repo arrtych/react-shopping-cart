@@ -6,16 +6,18 @@ import CustomShoppingCartIcon from "./CustomShoppingCartIcon";
 import { Link, useLocation } from "react-router-dom";
 import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
 import AddHomeOutlinedIcon from "@mui/icons-material/AddHomeOutlined";
+import { useDrawer } from "../context/DrawerContext";
 
 interface NavbarProps {
-  isOpen: boolean;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  isOpen?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
   const navItems = ["home", "store"];
   const { onClick } = { ...props };
   const location = useLocation();
+  const { openDrawer, changeDrawer } = useDrawer();
 
   useEffect(() => {
     changeBodyClass();
@@ -85,9 +87,9 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             height: "44px",
             borderRadius: "50%",
           }}
-          onClick={onClick}
+          onClick={changeDrawer}
         >
-          <CustomShoppingCartIcon isOpen={false} />
+          <CustomShoppingCartIcon />
         </Button>
       </Toolbar>
     </AppBar>

@@ -7,28 +7,33 @@ import Store from "./pages/Store";
 import About from "./pages/About";
 import ShoppingCart from "./components/ShoppingCart";
 import { ShoppingCartContextProvider } from "./context/ShoppingCartContext";
+import { DrawerProvider } from "./context/DrawerContext";
 
 function App() {
-  const [openDrawer, setOpenDrawer] = useState(false);
-  const changeDrawer = (e: any) => {
-    setOpenDrawer((e) => !e);
-  };
+  // const [openDrawer, setOpenDrawer] = useState(false);
+  // const changeDrawer = (e: any) => {
+  //   setOpenDrawer((e) => !e);
+  // };
 
-  const closeDrawer = () => {
-    setOpenDrawer(false);
-  };
+  // const closeDrawer = () => {
+  //   setOpenDrawer(false);
+  // };
 
   return (
     <ShoppingCartContextProvider>
-      <Router>
-        <Navbar isOpen={openDrawer} onClick={changeDrawer} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
-          {/* <Route path="/about" element={<About />} /> */}
-        </Routes>
-        <ShoppingCart isOpen={openDrawer} onClose={closeDrawer} />
-      </Router>
+      <DrawerProvider>
+        <Router>
+          {/* <Navbar isOpen={openDrawer} onClick={changeDrawer} /> */}
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/store" element={<Store />} />
+            {/* <Route path="/about" element={<About />} /> */}
+          </Routes>
+          {/* <ShoppingCart isOpen={openDrawer} onClose={closeDrawer} /> */}
+          <ShoppingCart />
+        </Router>
+      </DrawerProvider>
     </ShoppingCartContextProvider>
   );
 }

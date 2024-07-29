@@ -24,10 +24,11 @@ import { ProductProps } from "../types/Product";
 import ItemAmount from "./ItemAmount";
 import { getAmount } from "../utils/utils";
 import NoItemsInCart from "./NoItemsInCart";
+import { useDrawer } from "../context/DrawerContext";
 
 interface ShoppingCartProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
 type Anchor = "top" | "left" | "bottom" | "right";
@@ -36,12 +37,10 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
   props: ShoppingCartProps
 ) => {
   let { isOpen, onClose } = { ...props };
+
   const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-    onClose();
-  };
+  const { openDrawer, closeDrawer, changeDrawer } = useDrawer();
 
   const {
     removeFromCart,
@@ -104,7 +103,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
   ];
 
   return (
-    <Drawer open={isOpen} anchor="right" onClose={onClose}>
+    <Drawer open={openDrawer} anchor="right" onClose={closeDrawer}>
       <Box
         sx={
           items.length > 0
@@ -131,7 +130,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = (
             </Typography>
           </Grid>
           <Grid item xs={1} sx={{ textAlign: "right", pr: 0 }}>
-            <IconButton onClick={toggleDrawer(false)} color="secondary">
+            <IconButton onClick={closeDrawer} color="secondary">
               <ClearIcon sx={{ fill: "#212121" }} />
             </IconButton>
           </Grid>
