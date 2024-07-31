@@ -20,7 +20,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
   const { product } = { ...props };
   const { increaseItemAmount } = useContext(ShoppingCartContext);
   const navigate = useNavigate();
-  const { changeDrawer } = useDrawer();
+  const { toggle: toggleDrawer } = useDrawer();
 
   const handleProductClick = (productId: number) => {
     navigate(`/store?product=${productId}`);
@@ -119,7 +119,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                         variant="outlined"
                         onClick={() => {
                           increaseItemAmount(product);
-                          changeDrawer();
+                          toggleDrawer();
                         }}
                       >
                         Add to cart

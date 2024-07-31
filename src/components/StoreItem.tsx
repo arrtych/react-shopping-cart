@@ -76,7 +76,7 @@ function getObjectById(
 //save to database
 const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   const [imageData, setImageData] = useState<ImageProps[]>([]);
-  const { changeDrawer } = useDrawer();
+  const { toggle: toggleDrawer } = useDrawer();
   useEffect(() => {
     const fetchImageDimensions = async () => {
       const promises = db.map(
@@ -270,7 +270,7 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                 variant="outlined"
                 onClick={() => {
                   addToCart(props);
-                  changeDrawer();
+                  toggleDrawer();
                 }}
                 sx={{ marginRight: "15px" }}
               >

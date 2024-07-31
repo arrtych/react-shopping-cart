@@ -26,7 +26,7 @@ import NoItemsInCart from "./NoItemsInCart";
 import { useDrawer } from "../context/DrawerContext";
 
 const ShoppingCart: React.FC = () => {
-  const { openDrawer, closeDrawer } = useDrawer();
+  const { isOpen, close } = useDrawer();
 
   const {
     removeFromCart,
@@ -89,7 +89,7 @@ const ShoppingCart: React.FC = () => {
   ];
 
   return (
-    <Drawer open={openDrawer} anchor="right" onClose={closeDrawer}>
+    <Drawer open={isOpen} anchor="right" onClose={close}>
       <Box
         sx={
           items.length > 0
@@ -116,7 +116,7 @@ const ShoppingCart: React.FC = () => {
             </Typography>
           </Grid>
           <Grid item xs={1} sx={{ textAlign: "right", pr: 0 }}>
-            <IconButton onClick={closeDrawer} color="secondary">
+            <IconButton onClick={close} color="secondary">
               <ClearIcon sx={{ fill: "#212121" }} />
             </IconButton>
           </Grid>

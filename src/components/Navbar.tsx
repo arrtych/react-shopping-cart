@@ -11,7 +11,7 @@ import { useDrawer } from "../context/DrawerContext";
 const Navbar: React.FC = () => {
   const navItems = ["home", "store"];
   const location = useLocation();
-  const { changeDrawer } = useDrawer();
+  const { toggle: toggleDrawer } = useDrawer();
 
   useEffect(() => {
     changeBodyClass();
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
             height: "44px",
             borderRadius: "50%",
           }}
-          onClick={changeDrawer}
+          onClick={toggleDrawer}
         >
           <CustomShoppingCartIcon />
         </Button>
