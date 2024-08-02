@@ -7,6 +7,7 @@ const db: ProductProps[] = [
   {
     name: "Apple MacBook Air",
     price: 999,
+    oldPrice: 1299,
     imgUrl: "/imgs/m3-intro-image.png",
     description:
       "Discover the Apple MacBook Air, the epitome of sleek design and powerful performance. This ultra-thin, lightweight laptop features a stunning Retina display and is powered by the latest M1 chip, delivering incredible speed and efficiency. With its all-day battery life, backlit Magic Keyboard, and Touch ID, the MacBook Air is perfect for both work and play.",
@@ -28,21 +29,26 @@ const db: ProductProps[] = [
 
   {
     name: "Watch",
-    price: 420.0,
+    price: 799.0,
     imgUrl: "/imgs/AW_Ultra2_49mm_TI_Alpine_indigo-full-product-front-600.png",
-    description: defaultDescription,
+    description:
+      "Experience the pinnacle of wearable technology with the Apple Watch Ultra. This advanced smartwatch features a robust titanium case, a vibrant always-on Retina display, and a rugged Alpine Loop band for optimal comfort and durability. Packed with innovative health and fitness tracking capabilities, GPS navigation, and cellular connectivity, it is the perfect companion for your active lifestyle.",
   },
   {
     name: "Tablet",
-    price: 800.0,
+    price: 699.99,
+    oldPrice: 720.99,
     imgUrl: "/imgs/samsung-galaxy-tab-s8-tahvelarvuti-hall-eest-tagant.png",
-    description: defaultDescription,
+    description:
+      "Discover the ultimate in versatility and performance with the Samsung Galaxy Tab S8. This sleek and powerful tablet features a stunning 11-inch display, the latest Snapdragon processor, and an ultra-slim design. Ideal for both work and play, it includes the S Pen for precise input and creativity on the go. With its long-lasting battery and powerful performance, the Galaxy Tab S8 is your perfect companion for productivity and entertainment.",
   },
   {
     name: "Monitor",
-    price: 420.0,
+    price: 1299.99,
+    oldPrice: 1499.99,
     imgUrl: "/imgs/7aab240fb56a4ad69ef5b012005e2f61.webp",
-    description: defaultDescription,
+    description:
+      "Elevate your gaming experience with the Philips Momentum Curved Gaming Monitor. Featuring a stunning 49-inch UltraWide screen with 144Hz refresh rate and 1ms response time, this monitor ensures immersive and fluid gameplay. Its curved design enhances your field of view, making every game feel more realistic. Equipped with Adaptive-Sync technology, it eliminates screen tearing and delivers smooth, lag-free visuals.",
   },
   {
     name: "Scooter",

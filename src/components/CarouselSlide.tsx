@@ -83,34 +83,43 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                   sx={{ display: "flex" }}
                 >
                   <Grid container>
-                    <Grid item xs={12}>
-                      <Typography
-                        variant="h2"
+                    <Grid item xs={12} className="product-name-grid">
+                      <h2
+                        // variant="h2"
                         className="product-name"
                         // sx={{ color: "#ffcf70" }}
                       >
                         {product.name}
-                      </Typography>
+                      </h2>
                     </Grid>
 
-                    <Grid item xs={12}>
-                      <Typography
-                        variant="h5"
+                    <Grid item xs={12} className="product-price-grid">
+                      <p className="product-price-old">
+                        {defaultCurrency}
+                        {product.oldPrice || 0}
+                      </p>
+                      <p
+                        // variant="h5"
                         className="product-price"
-                        sx={{ color: "#7b7b7b" }}
+                        // style={{ color: "#7b7b7b" }}
                       >
                         {defaultCurrency}
                         {product.price}
-                      </Typography>
+                      </p>
                     </Grid>
 
-                    <Grid item xs={12} sx={{ marginRight: "30px" }}>
-                      <Typography
+                    <Grid
+                      item
+                      xs={12}
+                      sx={{ marginRight: "30px" }}
+                      className="product-description-grid"
+                    >
+                      <p
                         className="product-description"
-                        sx={{ marginBottom: "1.25rem" }}
+                        // style={{ marginBottom: "1.25rem" }}
                       >
                         {product.description}
-                      </Typography>
+                      </p>
                     </Grid>
 
                     <Grid item xs={12} className="product-buttons">

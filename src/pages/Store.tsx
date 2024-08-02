@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from "react";
-import storeItems from "../data/database";
 import { Grid, Typography } from "@mui/material";
 import StoreItem from "../components/StoreItem";
 import Search from "../components/Search";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
 import { useLocation } from "react-router-dom";
-// import { Unstable_Grid as GridNew } from "@mui/system";
+import storeItems from "../data/database";
 import { useMemo } from "react";
-
-const MemoizedImage = React.memo(({ src, alt }: any) => (
-  <img src={src} alt={alt} />
-));
-{
-  /* <MemoizedImage src="path/to/image.jpg" alt="Description" /> */
-}
 
 const Store: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState(storeItems);
   const location = useLocation();
 
+  const processedData = useMemo(() => {
+    return storeItems.map((product) => ({
+      ...product,
+    }));
+  }, [storeItems]);
+
   useEffect(() => {
     setFilteredItems(
-      storeItems.filter(
+      processedData.filter(
         (item) =>
           item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           (item.description &&
@@ -36,13 +34,10 @@ const Store: React.FC = () => {
     if (productId) {
       const productElement = document.getElementById(`product-${productId}`);
       if (productElement) {
-        // window.scrollBy(0, -10); // Adjust scrolling with a negative value here
-
-        // productElement.scrollIntoView({ block: "center", behavior: "smooth" });
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        productElement.scrollIntoView({ block: "center", behavior: "smooth" });
       }
     }
-  }, [searchTerm, location]);
+  }, [searchTerm, location, processedData]);
 
   const handleSearchClose = (): void => {
     setSearchTerm("");
@@ -140,6 +135,8 @@ const Store: React.FC = () => {
             listStyle: "none",
             maxWidth: "var(--desktop-breakpoint)",
             margin: "0 auto",
+            mb: "172px",
+            justifyContent: "center",
           }}
           className="storeitem-container"
         >
@@ -151,6 +148,7 @@ const Store: React.FC = () => {
               xs={4}
               sx={{ maxWidth: "calc((var(--desktop-breakpoint) / 3) - 23px)" }}
               id={`product-${item.id}`}
+              // className={item.id === 4 ? "pr-appear" : ""}
             >
               <StoreItem amount={0} {...item} searchTerm={searchTerm} />
             </Grid>

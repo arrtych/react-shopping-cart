@@ -8,43 +8,7 @@ import { defaultCurrency } from "../utils/constants";
 import DeleteIcon from "@mui/icons-material/DeleteOutline";
 import db from "../data/database";
 import { getImgSize } from "../utils/utils";
-import { useMemo } from "react";
-import { JsxElement } from "typescript";
-import { Suspense } from "react";
-import storeItems from "../data/database";
 import { useDrawer } from "../context/DrawerContext";
-
-// const MemoizedImage = React.memo(({ src, alt }: any) => (
-//   <img src={src} alt={alt} />
-// ));
-
-interface ImageProps2 {
-  src: string;
-  alt: string;
-  width: string | undefined;
-  height: string | undefined;
-}
-
-const MemoizedImage: React.FC<ImageProps2> = React.memo(
-  ({ src, alt, width, height }) => {
-    return (
-      <img
-        loading="eager"
-        decoding="async"
-        width={width}
-        height={height}
-        src={src}
-        alt={alt}
-      />
-    );
-  }
-);
-
-function ResponsiveImage({ src, alt }: any) {
-  return (
-    <img src={src} srcSet={src} alt={alt} loading="eager" decoding="async" />
-  );
-}
 
 const highlightText = (text: string, searchTerm: string) => {
   if (!searchTerm.trim()) return text;
@@ -167,22 +131,9 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
               <img
                 src={imgUrl}
                 alt=""
-                width={getImageData(imageData, id)?.width?.toString()}
-                height={getImageData(imageData, id)?.height?.toString()} // todo: not to call another request
+                // width={getImageData(imageData, id)?.width?.toString()}
+                // height={getImageData(imageData, id)?.height?.toString()} // todo: not to call another request
               />
-
-              {/* <MemoizedImage
-                width={getImageData(imageData, id)?.width?.toString()}
-                height={getImageData(imageData, id)?.height?.toString()} // todo: not to call another request
-                src={imgUrl}
-                alt="Description"
-              /> */}
-
-              {/* <ResponsiveImage age src={imgUrl} alt="Description" /> */}
-
-              {
-                //
-              }
             </div>
           </Paper>
         </Grid>
@@ -261,7 +212,6 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                   onClick={() => removeFromCart(props)}
                 >
                   <DeleteIcon />
-                  {/* or "remove" */}
                 </CustomButton>
               </>
             ) : (
