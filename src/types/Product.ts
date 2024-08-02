@@ -1,11 +1,13 @@
+import { ImageProps } from "./Image";
 export interface ProductProps {
   id: number;
   name: string;
   price: number;
   oldPrice?: number;
-  imgUrl: string;
+  // imgUrl: string;
   amount?: number;
   currency?: string;
   description?: string;
   searchTerm: string; //todo: removeafter
+  image: ImageProps;
 }

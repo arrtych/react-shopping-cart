@@ -19,6 +19,7 @@ const Store: React.FC = () => {
   }, [storeItems]);
 
   useEffect(() => {
+    console.log("processedData", JSON.stringify(processedData));
     setFilteredItems(
       processedData.filter(
         (item) =>

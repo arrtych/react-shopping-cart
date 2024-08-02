@@ -41,7 +41,7 @@ const ShoppingCart: React.FC = () => {
   const tableItems: ((item: ProductProps) => JSX.Element)[] = [
     (item: ProductProps) => (
       <img
-        src={item.imgUrl}
+        src={item.image.url}
         style={{
           height: "100px",
           width: "100%",

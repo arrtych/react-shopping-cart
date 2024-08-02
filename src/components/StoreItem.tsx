@@ -9,6 +9,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutline";
 import db from "../data/database";
 import { getImgSize } from "../utils/utils";
 import { useDrawer } from "../context/DrawerContext";
+import { ImageProps } from "../types/Image";
 
 const highlightText = (text: string, searchTerm: string) => {
   if (!searchTerm.trim()) return text;
@@ -23,14 +24,6 @@ const highlightText = (text: string, searchTerm: string) => {
   );
 };
 
-interface ImageProps {
-  id: number;
-  name: string;
-  width: number;
-  height: number;
-  // alt
-}
-
 function getObjectById(
   items: ImageProps[],
   id: number
@@ -39,37 +32,35 @@ function getObjectById(
 }
 //save to database
 const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
-  const [imageData, setImageData] = useState<ImageProps[]>([]);
+  // const [imageData, setImageData] = useState<ImageProps[]>([]);
   const { toggle: toggleDrawer } = useDrawer();
   useEffect(() => {
-    const fetchImageDimensions = async () => {
-      const promises = db.map(
-        //map to another function
-        (image) =>
-          new Promise<ImageProps>((resolve) => {
-            getImgSize(
-              image.imgUrl,
-              (dimensions: { width: any; height: any }) => {
-                resolve({
-                  id: image.id,
-                  name: image.name,
-                  width: dimensions.width,
-                  height: dimensions.height,
-                });
-              }
-            );
-          })
-      );
-
-      const results = await Promise.all(promises);
-      console.log("results", results);
-      setImageData(results);
-    };
-
-    fetchImageDimensions();
+    // const fetchImageDimensions = async () => {
+    //   const promises = db.map(
+    //     //map to another function
+    //     (image) =>
+    //       new Promise<ImageProps>((resolve) => {
+    //         getImgSize(
+    //           image.imgUrl,
+    //           (dimensions: { width: any; height: any }) => {
+    //             resolve({
+    //               id: image.id,
+    //               name: image.name,
+    //               width: dimensions.width,
+    //               height: dimensions.height,
+    //             });
+    //           }
+    //         );
+    //       })
+    //   );
+    //   const results = await Promise.all(promises);
+    //   console.log("results", results);
+    //   setImageData(results);
+    // };
+    // fetchImageDimensions();
   }, []);
 
-  const { currency, id, name, price, imgUrl, description, searchTerm } = {
+  const { currency, id, name, price, description, searchTerm, image } = {
     currency: defaultCurrency,
     ...props,
   };
@@ -84,18 +75,17 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   let amount = getItemAmount(id);
   const isInCart = !!amount;
 
-  const getImageData = (
-    imageData: ImageProps[],
-    id: number
-  ): { width?: number; height?: number } | undefined => {
-    const foundItem = getObjectById(imageData, id);
-    let image;
-    if (foundItem) {
-      image = { width: foundItem?.width, height: foundItem?.height };
-      return image;
-    }
-    // console.log("image", image);
-  };
+  // const getImageData = (
+  //   imageData: ImageProps[],
+  //   id: number
+  // ): { width?: number; height?: number } | undefined => {
+  //   const foundItem = getObjectById(imageData, id);
+  //   let image;
+  //   if (foundItem) {
+  //     image = { width: foundItem?.width, height: foundItem?.height };
+  //     return image;
+  //   }
+  // };
 
   // const OtherComponent = React.lazy(() => import(storeItems);
   // const OtherComponent = React.lazy(() => import(storeItems as ProductProps[]));
@@ -129,10 +119,12 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
           >
             <div className="product-image-element">
               <img
-                src={imgUrl}
-                alt=""
+                src={image.url}
+                alt={""}
                 // width={getImageData(imageData, id)?.width?.toString()}
                 // height={getImageData(imageData, id)?.height?.toString()} // todo: not to call another request
+                width={image.width}
+                height={image.height}
               />
             </div>
           </Paper>

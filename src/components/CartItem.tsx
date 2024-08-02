@@ -30,7 +30,7 @@ const CartItem: React.FC<CartIemProps> = (props: CartIemProps) => {
         <Grid container columns={{ xs: 12 }}>
           <Grid item xs={7}>
             <img
-              src={item.imgUrl}
+              src={item.image.url}
               style={{ height: "100px", width: "125px", objectFit: "cover" }}
             />
           </Grid>

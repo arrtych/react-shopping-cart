@@ -152,7 +152,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                 >
                   <div className="product-image-custom">
                     <img
-                      src={product.imgUrl}
+                      src={product.image.url}
                       alt={product.name}
                       style={{
                         width: "100%",
