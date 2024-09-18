@@ -1,0 +1,28 @@
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cart-total > div {
+  /* display: flex;
+  align-items: flex-start; */
+  flex: 0 1 auto;
+}
+.cart-total p {
+  margin: 0;
+}
+
+.left,
+.right {
+  font-family: "Montserrat Bold", sans-serif !important;
+}
+
+.left {
+  text-transform: uppercase;
+}
+
+.right {
+  color: var(--color-blue) !important;
+}

@@ -27,7 +27,7 @@ import { useDrawer } from "../context/DrawerContext";
 
 const ShoppingCart: React.FC = () => {
   const { isOpen, close } = useDrawer();
-
+  const title = "Cart";
   const {
     removeFromCart,
     getItemTotalAmount,
@@ -109,10 +109,12 @@ const ShoppingCart: React.FC = () => {
               component="h4"
               className="shopping-cart-title"
               sx={
-                items.length > 0 ? { color: "#000000de" } : { color: "#8b8b8b" }
+                items.length > 0
+                  ? { color: "var(--color-blue)" }
+                  : { color: "var(--color-grey)" }
               }
             >
-              Cart
+              {title}
             </Typography>
           </Grid>
           <Grid item xs={1} sx={{ textAlign: "right", pr: 0 }}>
@@ -179,7 +181,7 @@ const ShoppingCart: React.FC = () => {
           </>
         ) : (
           <>
-            <hr style={{ borderTop: 0 }} />
+            {/* <hr style={{ borderTop: 0 }} /> */}
             <NoItemsInCart />
           </>
         )}

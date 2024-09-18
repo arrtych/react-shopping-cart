@@ -7,8 +7,9 @@ import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 import { defaultCurrency } from "../utils/constants";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { scrollTo } from "../utils/utils";
+import "../styles/CarouselSlide.css";
 import { useDrawer } from "../context/DrawerContext";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export interface CarouselSlideProps {
   product: ProductProps;
@@ -137,7 +138,8 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (
                         onClick={() => handleProductClick(product.id)}
                         color="primary"
                       >
-                        Read more
+                        Explore more
+                        <ArrowForwardIcon />
                       </CustomButton>
                     </Grid>
                   </Grid>

@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
   };
 
   const navItemStyle = (isActive: boolean) => ({
-    color: isActive ? "#1976d2" : "gray",
+    color: isActive ? "var(--color-blue)" : "gray",
     fontWeight: isActive ? "bold" : "normal",
     marginRight: "20px",
   });

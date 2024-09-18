@@ -19,7 +19,6 @@ const Store: React.FC = () => {
   }, [storeItems]);
 
   useEffect(() => {
-    console.log("processedData", JSON.stringify(processedData));
     setFilteredItems(
       processedData.filter(
         (item) =>
@@ -36,6 +35,15 @@ const Store: React.FC = () => {
       const productElement = document.getElementById(`product-${productId}`);
       if (productElement) {
         productElement.scrollIntoView({ block: "center", behavior: "smooth" });
+        const productItem = productElement.querySelector(".product-item");
+        ///
+        if (productItem) {
+          productItem.classList.add("scroll-into");
+        }
+        // setTimeout(() => {
+        //   productItem?.classList.remove("scroll-into");
+        // }, 3000);
+        ///
       }
     }
   }, [searchTerm, location, processedData]);
@@ -61,6 +69,7 @@ const Store: React.FC = () => {
           left: "50%",
           transform: "translate(-50%, -50%)",
           top: "calc((100vh + 64px) / 2)",
+          textAlign: "center",
         }}
       >
         <Grid
@@ -113,8 +122,10 @@ const Store: React.FC = () => {
         <Grid
           id="search-container"
           item
+          // columns={{sm:12, xs:12, md:6}}
           xs={12}
           md={6}
+          sm={12}
           sx={{ margin: "1.5em 0px" }}
         >
           <Search
@@ -146,10 +157,9 @@ const Store: React.FC = () => {
               item
               key={item.id}
               component={"li"}
-              xs={4}
+              columns={{ xs: 12, sm: 4, md: 6 }}
               sx={{ maxWidth: "calc((var(--desktop-breakpoint) / 3) - 23px)" }}
               id={`product-${item.id}`}
-              // className={item.id === 4 ? "pr-appear" : ""}
             >
               <StoreItem amount={0} {...item} searchTerm={searchTerm} />
             </Grid>

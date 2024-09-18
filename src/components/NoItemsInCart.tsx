@@ -12,7 +12,7 @@ const NoItemsInCart: React.FC = () => {
         sx={{
           justifyContent: "center",
           textAlign: "center",
-          color: "#8b8b8b",
+          color: "var(--color-grey)",
           alignItems: "center",
           margin: 0,
           position: "absolute",

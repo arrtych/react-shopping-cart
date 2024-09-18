@@ -50,31 +50,35 @@ const dbOld: any[] = [
   },
   {
     name: "Scooter",
-    price: 420.0,
-    description: defaultDescription,
+    price: 499.99,
+    description:
+      "The Electric Scooter 500W is designed for modern urban mobility, combining efficiency, durability, and style. It is powered by a robust 500-watt motor and equipped with long-lasting battery life, making it the perfect solution for your daily commute. The lightweight frame allows for easy transportation and the scooter's sleek, minimalist design makes it stand out in any cityscape.",
   },
   {
-    name: "Console",
-    price: 420.0,
-    description: defaultDescription,
+    name: "PlayStation 5",
+    price: 499.99,
+    description:
+      "Experience lightning-fast loading, stunning 4K visuals, and groundbreaking gaming technology with the PlayStation 5. Available in two editions, the PS5 offers the ultimate gaming experience whether you prefer physical discs or an all-digital library. With an advanced custom SSD, powerful GPU, and a DualSense controller, the PS5 delivers immersive gameplay and breathtaking speed.",
   },
   {
     name: "Headphones",
-    price: 15.0,
-    description: defaultDescription,
+    price: 349.99,
+    description:
+      "Beats Studio3 headphones offer a blend of performance, comfort, and sleek design, making them ideal for music lovers and professionals alike. Enjoy crystal-clear sound with every beat!",
   },
 
   {
-    name: "Vacuum Cleaner",
+    name: "Xiaomi Vacuum Cleaner",
     price: 299.99,
     description:
       "Meet the Xiaomi Mi Robot Vacuum, your intelligent home cleaning assistant. This sleek, white robotic vacuum features advanced mapping and navigation technology for efficient and thorough cleaning. Equipped with powerful suction and multiple cleaning modes, it tackles dust, dirt, and debris on various surfaces with ease. The Mi Robot Vacuum is also Wi-Fi enabled, allowing you to control it remotely via a smartphone app.",
   },
 
   {
-    name: "TV",
-    price: 157.45,
-    description: defaultDescription,
+    name: "Samsung Smart TV",
+    price: 549.99,
+    description:
+      "The Samsung 4K Ultra HD Smart TV offers a premium viewing experience with stunning clarity, vivid colors, and smart features to enhance your entertainment. Whether you’re watching movies, streaming shows, or playing games, this TV provides an immersive experience that brings every detail to life.",
   },
 
   {

@@ -30,7 +30,7 @@ function getObjectById(
 ): ImageProps | undefined {
   return items.find((item) => item.id === id);
 }
-//save to database
+
 const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   // const [imageData, setImageData] = useState<ImageProps[]>([]);
   const { toggle: toggleDrawer } = useDrawer();
@@ -87,10 +87,6 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
   //   }
   // };
 
-  // const OtherComponent = React.lazy(() => import(storeItems);
-  // const OtherComponent = React.lazy(() => import(storeItems as ProductProps[]));
-  // const OtherComponent = React.lazy(() => import(storeItems[0].path));
-
   return (
     <Box
       sx={{
@@ -121,10 +117,10 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
               <img
                 src={image.url}
                 alt={""}
-                // width={getImageData(imageData, id)?.width?.toString()}
-                // height={getImageData(imageData, id)?.height?.toString()} // todo: not to call another request
                 width={image.width}
                 height={image.height}
+                decoding="async"
+                loading="lazy"
               />
             </div>
           </Paper>
@@ -145,7 +141,10 @@ const StoreItem: React.FC<ProductProps> = (props: ProductProps) => {
                 textAlign: "right",
               }}
             >
-              <Typography variant="h5" sx={{ mr: 3, color: "#7b7b7b" }}>
+              <Typography
+                variant="h5"
+                sx={{ mr: 3, color: "var(--color-blue-dark)" }}
+              >
                 {currency}
                 {price}
               </Typography>

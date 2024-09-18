@@ -3,5 +3,5 @@ export interface ImageProps {
   width: number;
   height: number;
   url: string;
-  alt?: ""; // todo:
+  alt?: "";
 }
