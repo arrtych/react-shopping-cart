@@ -24,6 +24,7 @@ import ItemAmount from "./ItemAmount";
 import { getAmount } from "../utils/utils";
 import NoItemsInCart from "./NoItemsInCart";
 import { useDrawer } from "../context/DrawerContext";
+import "../styles/ShoppingCart.css";
 
 const ShoppingCart: React.FC = () => {
   const { isOpen, close } = useDrawer();
@@ -93,7 +94,7 @@ const ShoppingCart: React.FC = () => {
       <Box
         sx={
           items.length > 0
-            ? { width: "43.75rem", mt: "0.75rem", ml: "0.5rem", mr: "0.5rem" }
+            ? { width: "43.75rem", mt: "24px", ml: "0.5rem", mr: "0.5rem" }
             : {
                 width: "30rem",
                 mt: "0.75rem",
@@ -105,8 +106,8 @@ const ShoppingCart: React.FC = () => {
         <Grid container columns={{ xs: 12 }} sx={{ pr: 0.5 }}>
           <Grid item xs={11} sx={{ pl: 2 }}>
             <Typography
-              variant="h4"
-              component="h4"
+              variant="h5"
+              component="h5"
               className="shopping-cart-title"
               sx={
                 items.length > 0

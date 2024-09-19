@@ -11,28 +11,26 @@ const CartTotalItem: React.FC = () => {
   let amount = getTotalPrice() || 0;
 
   return (
-    <div>
-      {/* <hr style={{ borderTop: 0 }} /> */}
+    <>
       <Grid
         container
         columns={{ xs: 12 }}
         // sx={{ pr: 2, pt: 2 }}
-        className="teeest"
+        className="cart-total"
       >
-        <Grid item xs={12} className="cart-total">
-          <Grid item xs={12}>
-            <p className="left">Total :</p>
-          </Grid>
-          <Grid item xs={12}>
-            <p className="right">
-              {defaultCurrency}
-              {round(amount)}
-            </p>
-          </Grid>
-          {/* <Typography variant="h4" component="h4"></Typography> */}
+        <Grid item xs={6}>
+          <Typography variant="h5" component="h5" className="left">
+            Total
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="h5" component="h5" className="right">
+            {defaultCurrency}
+            {round(amount)}
+          </Typography>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 };
 
